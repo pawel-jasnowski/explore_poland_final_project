@@ -14,8 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
+
+from review_app import views
+from review_app.models import Review
+from review_app.forms import ReviewYourReservation
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('review/create', CreateView.as_view(template_name='form.html', form_class=ReviewYourReservation) , name='create_review'),
+    path('review/update/<pk>', UpdateView.as_view(template_name='form.html', model=Review, form_class=ReviewYourReservation), name='update_review'),
+    path('review/delete/<pk>', DeleteView.as_view(template_name='delete.html', model=Review))
+
 ]

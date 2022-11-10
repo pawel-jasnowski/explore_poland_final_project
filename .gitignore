@@ -2,7 +2,7 @@
 
 ### Example user template template
 ### Example user template
-
+db.sqlite3
 # IntelliJ project files
 .idea/
 *.iml
