@@ -1,0 +1,64 @@
+{% load static%}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Szablon</title>
+
+    <link rel="stylesheet" href="{% static 'new.css' %}">
+</head>
+
+<body>
+<div id="wrapper">
+
+    <div id="menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Offer</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </div>
+    <div id="logo">
+        <img src="{% static 'homepage/explore_poland.jpg'%}" style="width: 980px;">
+
+        <div id="header">
+            <div id="title_head">
+                <h2>Poland is amazing, explore it</h2>
+                <p>
+                    Poland is a wonderful country, full of amazing beautiful
+                    places. <br>Find one of them</p>
+                <br>
+
+            </div>
+            <img src="{% static 'homepage/kolage.jpg'%}" align="right" style="
+    width: 230px;
+">
+        </div>
+    </div>
+    <div id="solid">
+        <div id="solid_box" class="margin3">
+            <img src="{% static 'homepage/gory.jpg'%}" align="left">
+            <a href="#">Mountains</a>
+        </div>
+        <div id="solid_box" class="margin2">
+            <img src="{% static 'homepage/jeziora.jpg'%}" align="left">
+            <a href="#">Lakes</a>
+        </div>
+        <div id="solid_box" class="margin2">
+            <img src="{% static 'homepage/morze.jpg'%}" align="left">
+
+
+            <a href="#">Sea</a>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>© Wszelkie prawa zastrzeżone. <br> Projekt: <a
+                href="http://www.templatki.net">Darmowe Szablony Stron</a></p>
+    </div>
+</div>
+
+
+</body>
+</html>
