@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,9 +26,11 @@ from review_app.forms import ReviewYourReservation
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('review/create', CreateView.as_view(template_name='form.html', form_class=ReviewYourReservation) , name='create_review'),
+    path('review/create', CreateView.as_view(template_name='form.html', form_class=ReviewYourReservation,
+                                             success_url=reverse_lazy('review_all')), name='create_review'),
     path('review/update/<pk>', UpdateView.as_view(template_name='form.html', model=Review, form_class=ReviewYourReservation), name='update_review'),
-    path('review/delete/<pk>', DeleteView.as_view(template_name='delete.html', model=Review))
+    path('review/delete/<pk>', DeleteView.as_view(template_name='delete.html', model=Review)),
+    path('review/all', ListView.as_view(template_name='review_all.html', model=Review), name='review_all')
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

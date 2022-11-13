@@ -13,4 +13,4 @@ def review(request):
 class CreateReviewForm(CreateView):
     template_name = 'form.html'
     form_class = ReviewYourReservation
-    success_url = reverse_lazy('review/create')
+    success_url = reverse_lazy('review_all')
