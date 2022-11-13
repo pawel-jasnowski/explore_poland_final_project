@@ -1,11 +1,13 @@
-from django.forms import ModelForm, CharField, IntegerField
+from django.forms import ModelForm, CharField, IntegerField, Textarea
 from django.core.exceptions import ValidationError
 
 from .models import Review
 
 def rating_validator(value):
-    if value < 0 and value > 10:
-        raise ValidationError('Rating must be between 0-9')
+    pass
+
+def review_body_validator(value):
+    pass
 
 class ReviewYourReservation(ModelForm):
 
@@ -13,6 +15,6 @@ class ReviewYourReservation(ModelForm):
         model = Review
         fields ='__all__'
 
-    rating = IntegerField (validators=[rating_validator])          # walidacja ? / np. punktacja 0-10
-    review_body = CharField(max_length=500)     # jakieś validacje dotyczące tego pola ?! np= zakaz przekleństw
+    rating = IntegerField (min_value=0, max_value=9)          # walidacja ? / np. punktacja 0-10
+    review_body = CharField(max_length=500, widget=Textarea)     # jakieś validacje dotyczące tego pola ?! np= zakaz przekleństw
 
