@@ -1,0 +1,44 @@
+{% load static%}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Review Your Reservation</title>
+
+    <link rel="stylesheet" href="{% static 'new.css' %}">
+</head>
+
+<body>
+<div id="wrapper">
+
+    <div id="menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Offer</a></li>
+            <li><a href="#">Login</a></li>
+        </ul>
+    </div>
+    <div id="logo">
+        <img src="{% static 'homepage/explore_poland.jpg'%}" style="width: 980px;">
+        <center>
+            <p><h2>You can review Your reservation below</h2></p>
+            <p><h2>tutaj powinno być info jakiej rezerwacji dotyczy review ???</h2></p>
+            <p><h2>... ? </h2></p>
+            <p><h2>Thank You !</h2></p>
+            <div class="container">
+            <div class="jumbotron">
+                {% block content %}{% endblock %}
+            </div>
+        </center>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+</body>
+</html>
