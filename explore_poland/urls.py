@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 from review_app import views
 from review_app.models import Review
@@ -29,3 +31,5 @@ urlpatterns = [
     path('review/delete/<pk>', DeleteView.as_view(template_name='delete.html', model=Review))
 
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
