@@ -1,0 +1,38 @@
+{% extends "home.html" %}
+<!--{% load static %}-->
+<link rel="stylesheet" href="{% static 'new.css' %}">
+{% block content %}
+    <div id="header">
+        <div id="title_head">
+            <h2>Poland is amazing, explore it</h2>
+            <p>
+                Poland is a wonderful country, full of amazing beautiful
+                places. <br>Find one of them</p>
+            <br>
+        </div>
+    <div id="solid">
+
+        <div id="solid_box" class="margin3">
+     <img src="{% static 'homepage/gory.jpg' %}">
+             <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Home_page">gory</a>
+                    </div>
+
+        <div id="solid_box" class="margin2">
+          <img src="{% static 'homepage/jeziora.jpg' %}">
+       <a href="#">Lakes</a>
+             </div>
+
+        <div id="solid_box" class="margin2">
+     <img src="{% static 'homepage/morze.jpg' %}">
+
+
+          <a href="#">Sea</a>
+               </div>
+       </div>
+
+<div id="footer">
+<p>© Wszelkie prawa zastrzeżone. <br> Projekt: <a
+             href="http://www.templatki.net">Darmowe Szablony Stron</a></p>
+ </div>
+</div>
+{% endblock %}
