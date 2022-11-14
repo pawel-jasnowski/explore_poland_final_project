@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'explore_poland_app',
     'places_app'
+
+    'explore_poland_app',
+    'home_page_app',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +60,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ["places_app/templates"],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,6 +126,8 @@ STATIC_ROOT = 'static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'explore_media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
