@@ -13,7 +13,7 @@
 
     <div id="menu">
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="/explore/home_page/">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Offer</a></li>
             <li><a href="#">Login</a></li>
@@ -26,10 +26,14 @@
          {% for review in object_list %}
            <p>
                <tr>
-                <td>{{ review.review_body }}</td>
-                <td>{{ review.rating }}</td>
+                    <td> <b>Review id:</b> {{ review.id }} </td>
+                    <td> <b>Name:</b> {{ review.name }} </td>
+                    <td> <b>Your review:</b> {{ review.review_body }}</td>
+                    <td> <b>Your overall rating is:</b> {{ review.rating }}</td>
                </tr>
-           </p>
+               Would You like to <a href="/review/update/{{ review.id }}">UPDATE</a> this review?
+               Would You like to <a href="/review/delete/{{ review.id }}">DELETE</a> this review?
+        </p>
             {% endfor %}
         </center>
         </div>

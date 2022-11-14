@@ -28,8 +28,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('review/create', CreateView.as_view(template_name='form.html', form_class=ReviewYourReservation,
                                              success_url=reverse_lazy('review_all')), name='create_review'),
-    path('review/update/<pk>', UpdateView.as_view(template_name='form.html', model=Review, form_class=ReviewYourReservation), name='update_review'),
-    path('review/delete/<pk>', DeleteView.as_view(template_name='delete.html', model=Review)),
+    path('review/update/<pk>', UpdateView.as_view(template_name='form.html', model=Review, form_class=ReviewYourReservation, success_url=reverse_lazy('review_all')), name='update_review'),
+    path('review/delete/<pk>', DeleteView.as_view(template_name='delete.html', model=Review, success_url=reverse_lazy('review_all'))),
     path('review/all', ListView.as_view(template_name='review_all.html', model=Review), name='review_all'),
     path('explore/', include('home_page_app.urls')),
 ]
