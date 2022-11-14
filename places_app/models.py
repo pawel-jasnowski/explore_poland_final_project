@@ -24,7 +24,7 @@ class Places(Model):
 
 
     def __str__(self):
-        return f"{self.place_name} ({self.region},{self.city})"
+        return f"{self.place_name} ({self.region},{self.city}, {self.images})"
 
 
 

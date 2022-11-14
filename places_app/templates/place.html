@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
     {% else %}
          <h2>Tu będą oferty: {{ places|length }}</h2>
         {% for place in places %}
-          <p> {{ place }}</p>
+
         {% endfor %}
     {% endif %}
 
