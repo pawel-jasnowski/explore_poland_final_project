@@ -18,9 +18,9 @@ a {
 	text-decoration: none;
 }
 
-p {
-	color: #666;
-}
+/*p {*/
+/*	!*color: #666;*!*/
+/*}*/
 
 a:hover {
 	text-decoration: underline;
@@ -29,12 +29,10 @@ a:hover {
 #logo {
 	float: left;
 	padding-left: 10px;
-	margin-top: 40px;
-	margin-bottom: 30px;
+	margin-top: 20px;
+	margin-bottom: 10px;
 	position: center;
-
-
-
+	width: 970px;
 }
 
 #logo a {
@@ -59,7 +57,7 @@ a:hover {
 	display: block;
 	float: left;
 	font-family: Arial;
-	color: #FFF;
+	/*color: #FFF;*/
 }
 
 #menu a {
@@ -70,7 +68,7 @@ a:hover {
 	margin-top: 10px;
 	padding: 0px 20px 0px 20px;
 	text-decoration: none;
-	font-family: Arial;;
+	font-family: Arial;
 }
 
 #menu a:hover {
@@ -81,9 +79,9 @@ a:hover {
 #header {
 	width: 980px;
 	height: 260px;
-	background-color: #00CC99;
 	margin-top: 30px;
 }
+
 
 #header img {
 	margin: 15px 20px 20px 20px;
@@ -94,32 +92,33 @@ a:hover {
 
 #title_head {
 	float: left;
-	width: 600px;
+	width: 970px;
 	padding-left: 30px;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background-color: #8ca05e;
 }
-
 #title_head h2 {
 	color: #F1F1F1;
 	font-size: 36px;
 	font-weight: normal;
 	text-shadow: #000 0px 1px 0px;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	text-align: center;
 }
 
 #title_head p {
 	color: #F1F1F1;
 	font-size: 16px;
+	text-align: center;
 }
 
 #header a {
 	padding: 5px;
-	background: #CCC;
-	color: #333;
-	-webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+	margin-bottom: 10px;
+	-webkit-border-radius: 0px;
+    -khtml-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
 }
 
 #header a:hover {
@@ -130,6 +129,7 @@ a:hover {
 
 .margin1 {
 	margin-left: 15px;
+
 }
 
 .margin2 {
@@ -156,14 +156,13 @@ h2 {
 #sidebar {
 	width: 280px;
 	float: left;
+
 }
 
 #solid {
-	width: 980px;
-	float: left;
-	padding: 10px;
+	width: 970px;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	background-color: white;
+	margin-left: 30px;
 }
 
 #solid p {
@@ -172,6 +171,7 @@ h2 {
 	font-size: 13px;
 	text-align: justify;
 	color: #666;
+
 }
 
 .solid_title1 {
@@ -183,6 +183,7 @@ h2 {
 	font-size: 48px;
 	color: #47add9;
 	margin-top: -15px;
+
 }
 
 #solid_box {
@@ -210,12 +211,16 @@ h2 {
 
 #solid_box a {
 	padding: 10px;
-	background: #00CC99;
-	color: #FFF;
+	background: #8ca05e;
+	color: white;
+	font-size: 18px;
+	/*font-weight: bold;*/
 	-webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+
+
 }
 
 #solid_box a:hover {
@@ -224,17 +229,20 @@ h2 {
 }
 
 #solid_box img {
-	float: left;
-	margin-right: 10px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	/*float: left;*/
 	margin-top: 10px;
 	width: 300px
 }
 
 #footer, #footer p {
+	margin-top: 30px;
 	float: left;
 	font-size: 12px;
 	color: #555;
-	margin-left: 20px;
+	margin-left: 10px;
 }
 
 #footer a {
