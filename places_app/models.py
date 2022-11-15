@@ -1,4 +1,4 @@
-from django.db.models import Model, CharField, TextField, ImageField
+from django.db.models import Model, CharField, TextField, ImageField, IntegerField
 
 REGION = {
     ("Sea", "Sea"),
@@ -18,6 +18,7 @@ class Places(Model):
     city = CharField(max_length=50, null=False)
     region = CharField(max_length=20, choices=REGION, null=False, blank=False)
     object_type = CharField(max_length=20, choices=OBJECT)
+    price_per_night = IntegerField( null=False, blank=False)
     facilities = CharField(max_length=100, null=False)
     description = TextField(null=False)
     images = ImageField(upload_to="places_img", null=False, blank=False)
