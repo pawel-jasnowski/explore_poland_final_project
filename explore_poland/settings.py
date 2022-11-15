@@ -38,9 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'explore_poland_app',
-    'places_app'
-
-    'explore_poland_app',
+    'places_app',
     'home_page_app',
 ]
 
@@ -128,6 +126,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'explore_media'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'places_app/media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

@@ -8,12 +8,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Oferty</title>
 
+    <a href="{% url 'new_place' %}"> Add place </a>
+
     {% if places|length == 0 %}
          <h2> Brak ofert miejsc. </h2>
     {% else %}
          <h2>Tu będą oferty: {{ places|length }}</h2>
-        {% for place in places %}
 
+        {% for place in places %}
+       <h3> {{ place}}</h3>
+        <p>{{ place.place_name}}</p>
+        <a href="{% url 'edit_place' place.id %}"> Edit </a>
+        <a href="{% url 'delete_place' place.id %}"> Delete </a>
         {% endfor %}
     {% endif %}
 
