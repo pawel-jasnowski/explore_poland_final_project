@@ -31,8 +31,7 @@ urlpatterns = [
     path('accounts/sign_up', SignUpView.as_view(), name='sign_up'),
     path('accounts/login/', LoginView.as_view(), name='login'),
     path('accounts/logout/', LogoutView.as_view(), name='logout'),
-
-    path('review/create', CreateView.as_view(template_name='form.html', form_class=ReviewYourReservation,
+    path('review/create', CreateView.as_view(template_name='form2_karola.html', form_class=ReviewYourReservation, # zmiana FORM => FORM2_KAROLA
                                              success_url=reverse_lazy('review_all')), name='create_review'),
     path('review/update/<pk>', UpdateView.as_view(template_name='form.html', model=Review, form_class=ReviewYourReservation, success_url=reverse_lazy('review_all')), name='update_review'),
     path('review/delete/<pk>', DeleteView.as_view(template_name='delete.html', model=Review, success_url=reverse_lazy('review_all'))),
