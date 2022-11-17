@@ -12,11 +12,8 @@ from .forms import SignUpForm
 def review(request):
     return HttpResponse('Review .. ')
 
-class LockedView(LoginRequiredMixin):
-    login_url = "admin:login"
-
-class CreateReviewForm(LockedView, CreateView):
-    template_name = 'form.html'
+class CreateReviewFormView(LoginRequiredMixin, CreateView):
+    template_name = 'form2_karola.html'
     form_class = ReviewYourReservation
     success_url = reverse_lazy('review_all')
     
@@ -24,4 +21,9 @@ class SignUpView(CreateView):
     template_name = 'sign_up_template.html'
     form_class = SignUpForm
     success_url = reverse_lazy('login')
+
+class ReviewListView(LoginRequiredMixin, ListView):
+    template_name = 'review_all.html'
+    model = Review
+
     
