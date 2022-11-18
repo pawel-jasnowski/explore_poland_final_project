@@ -1,13 +1,10 @@
+{% extends 'base.html' %}
 {% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Oferty</title>
+{#{% load bootstrap %}#}
 
+{% block title %} Lista ofert {% endblock %}
+
+{% block site %}
     <a href="{% url 'new_place' %}"> Add place </a>
 
     {% if places|length == 0 %}
@@ -16,16 +13,36 @@
          <h2>Tu będą oferty: {{ places|length }}</h2>
 
         {% for place in places %}
-       <h3> {{ place}}</h3>
-        <p>{{ place.place_name}}</p>
-        <a href="{% url 'edit_place' place.id %}"> Edit </a>
-        <a href="{% url 'delete_place' place.id %}"> Delete </a>
+            <div class="card">
+              <div class="card-body">
+                  <img src="{{ MEDIA_URL }}{{ place.images }}" class="places-img">
+                  <div class="row">
+                      <div class="col-9">
+                          <p class="card-title">{{ place.place_name }}</p>
+                          <p class="facilities">Udogodnienia:</p>
+                          <ul>
+                              <li>{{ place.facilities }}</li>
+                          </ul>
+                      </div>
+                       <div class="col-3">
+                           <a href="{% url 'edit_place' place.id %}"><i class="fas fa-2x fa-edit"></i> Edit </a>
+                           <a href="{% url 'delete_place' place.id %}"><i class="fas fa-2x fa-trash-alt"></i>Delete</a>
+                           <p class="price">Price {{ place.price_per_night }} PLN/per night<p>
+                       </div>
+
+
+                      </div>
+                  <div class="row">
+                      <p class="card-text">{{ place.description }}</p>
+                  </div>
+                  <buttom class="button">ZAREZERWUJ!</buttom>
+
+
+              </div>
+            </div>
+       <h3> </h3>
+        <p></p>
+
         {% endfor %}
     {% endif %}
-
-
-</head>
-<body>
-
-</body>
-</html>
+{% endblock %}
