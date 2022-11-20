@@ -1,7 +1,5 @@
 {% extends 'home.html' %}
 
-
-
 {% block content %}
 <h2>Login</h2>
 
@@ -9,6 +7,8 @@
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Login">
+    <br></br>
+    <a href="{% url 'main' %}">Go back to main page here</a>
 </form>
 
 {% endblock %}

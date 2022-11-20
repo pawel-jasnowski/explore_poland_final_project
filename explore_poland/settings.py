@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 
     'explore_poland_app',
     'home_page_app',
-    'review_app'
+    'review_app',
+    'user_app'
 ]
 
 MIDDLEWARE = [

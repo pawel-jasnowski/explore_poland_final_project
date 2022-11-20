@@ -1,6 +1,5 @@
 {% load static%}
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -15,16 +14,10 @@
 
     <div id="menu">
         <ul>
-            {% if user.is_authenticated %}
-            <li> <a href="{% url 'logout_user' %}">Logout</a></li>
-             {% else %}
-             <li><a href="{% url 'login_user' %}">Login</a></li>
-            {% endif %}
-            <li><a href="{% url 'register_user' %}">Register</a></li>
             <li><a href="{% url 'main' %}">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="/review/all">Offer</a></li>
-<!--            <li><a href="#">Login</a></li>-->
+            <li><a href="#">Offer</a></li>
+            <li><a href="{% url 'login_user' %}">Login</a></li>
         </ul>
     </div>
     <div id="logo">
@@ -32,8 +25,18 @@
     </div>
     <div class="container">
       <div class="jumbotron">
+
         {% block content %}{% endblock %}
+          {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                 {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+          {% endif %}
       </div>
+    </div>
 
 </body>
 </html>
