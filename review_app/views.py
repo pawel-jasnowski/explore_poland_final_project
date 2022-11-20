@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView, FormView, View
+from django.views.generic import ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
@@ -11,12 +11,21 @@ from review_app.models import Review
 # from .forms import ReviewYourReservation, CreateReview
 # Create your views here.
 
+# def create_new_review(request):
+#     return render(request, 'home.html')
 
 def create_new_review(request):
-    render(request, 'review_form.html', {})
+    if request.method == 'POST':
+        form = CreateReview(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('main')
+    else:
+        form = CreateReview()
+    return render(request, 'create_review.html',{})
+#
+# def ReviewList(LoginRequiredMixin, ListView):
+#     template_name = 'review_form_karola.html'
 
-def review_list(LoginRequiredMixin, ListView):
-    template_name = 'review_all.html'
-    model = Review
 
-    
+

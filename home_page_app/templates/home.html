@@ -23,7 +23,7 @@
             <li><a href="{% url 'register_user' %}">Register</a></li>
             <li><a href="{% url 'main' %}">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="/review/all">Offer</a></li>
+            <li><a href="{% url 'main' %}">Offer</a></li>
 <!--            <li><a href="#">Login</a></li>-->
         </ul>
     </div>
@@ -34,6 +34,7 @@
       <div class="jumbotron">
         {% block content %}{% endblock %}
       </div>
-
+    </div>
+</div>
 </body>
 </html>
