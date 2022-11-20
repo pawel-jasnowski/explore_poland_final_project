@@ -1,5 +1,6 @@
 from django.db.models import Model, CharField, TextField, ImageField, IntegerField
 
+
 REGION = {
     ("Sea", "Sea"),
     ("Mountains", "Mountains"),

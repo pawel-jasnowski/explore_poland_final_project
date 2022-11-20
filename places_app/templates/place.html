@@ -5,6 +5,7 @@
 {% block title %} Lista ofert {% endblock %}
 
 {% block site %}
+
     <a href="{% url 'new_place' %}"> Add place </a>
 
     {% if places|length == 0 %}
