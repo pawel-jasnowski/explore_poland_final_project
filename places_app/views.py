@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Places
 from .forms import PlacesForm
+from .filters import PlacesFilter
 
 
-
-def all_places(request):
-    all_offers = Places.objects.all()
-    return render(request, 'place.html', {'places': all_offers})
+# def all_places(request):
+#     all_offers = Places.objects.all()
+#     return render(request, 'place.html', {'places': all_offers})
 
 def new_place(request):
     form = PlacesForm(request.POST or None, request.FILES or None)
@@ -35,3 +35,17 @@ def delete_place(request, id):
 
     return render(request, 'confirm_deletion.html', {'place': place})
 
+
+def all_places(request):
+    all_offers = Places.objects.all()
+    #     return render(request, 'place.html', {'places': all_offers})
+    context ={'places': all_offers}
+
+    filtered_places = PlacesFilter(
+        request.GET,
+        queryset=Places.objects.all()
+    )
+
+    context['filtered_places'] = filtered_places
+
+    return render(request, 'place.html', context=context)

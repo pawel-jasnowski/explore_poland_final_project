@@ -5,13 +5,24 @@
 {% block title %} Lista ofert {% endblock %}
 
 {% block site %}
+    <form methon="get">
+        {{ filtered_places.form.as_p }}
+        <input type="submit" value="Search">
+    </form>
 
+    {% for places in filtered_places.qs %}
+        <h2>
+            {{ places.region }}
+            {{ places.city }}
+            {{ places.price_per_night }}
+        </h2>
+    {% endfor %}
     <a href="{% url 'new_place' %}"> Add place </a>
 
     {% if places|length == 0 %}
          <h2> Brak ofert miejsc. </h2>
     {% else %}
-         <h2>Tu będą oferty: {{ places|length }}</h2>
+{#         <h2>Tu będą oferty: {{ places|length }}</h2>#}
 
         {% for place in places %}
             <div class="card">
@@ -20,7 +31,7 @@
                   <div class="row">
                       <div class="col-9">
                           <p class="card-title">{{ place.place_name }}</p>
-                          <div class="facilities">Udogodnienia:</div>
+                          <div class="facilities">Facilities:</div>
                           <ul>
                               <li>{{ place.facilities }}</li>
                           </ul>
