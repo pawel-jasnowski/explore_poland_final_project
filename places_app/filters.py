@@ -1,14 +1,16 @@
 import django_filters
 from .models import Places
 
-class PlacesFilter(django_filters.FilterSet):
 
+REGION = {
+    ("Sea", "Sea"),
+    ("Mountains", "Mountains"),
+    ("Lakes", "Lakes")
+}
+
+class PlacesFilter(django_filters.FilterSet):
     class Meta:
         model = Places
-        fields = [
-            'region',
-            'city',
-            'price_per_night',
-        ]
-
-
+        fields = {
+            'region'
+        }

@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'explore_poland_app',
     'places_app',
     'home_page_app',
-
+    'django_filters',
 ]
 
 MIDDLEWARE = [

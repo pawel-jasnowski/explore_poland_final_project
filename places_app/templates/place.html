@@ -5,25 +5,28 @@
 {% block title %} Lista ofert {% endblock %}
 
 {% block site %}
-    <form methon="get">
-        {{ filtered_places.form.as_p }}
-        <input type="submit" value="Search">
+<div>
+    <ul>
+        {% for place in queryset %}
+            <li>
+            {{ places.region }}
+            </li>
+
+        {% endfor %}
+    </ul>
+
+</div>
+    <form method="get">
+
+        <button type="submit" class="btn btn-primary">Search</button>
     </form>
 
-    {% for places in filtered_places.qs %}
-        <h2>
-            {{ places.region }}
-            {{ places.city }}
-            {{ places.price_per_night }}
-        </h2>
-    {% endfor %}
     <a href="{% url 'new_place' %}"> Add place </a>
 
     {% if places|length == 0 %}
          <h2> Brak ofert miejsc. </h2>
     {% else %}
-{#         <h2>Tu będą oferty: {{ places|length }}</h2>#}
-
+         <h2>Tu będą oferty: {{ places|length }}</h2>
         {% for place in places %}
             <div class="card">
               <div class="card-body">
@@ -32,28 +35,29 @@
                       <div class="col-9">
                           <p class="card-title">{{ place.place_name }}</p>
                           <div class="facilities">Facilities:</div>
-                          <ul>
-                              <li>{{ place.facilities }}</li>
-                          </ul>
+                          <div>
+                              <ul>
+                                  <li>{{ place.facilities }}</li>
+                              </ul>
+                          </div>
+                          <div class="region">{{ place.region }}: {{ place.city }} <br></div>
                       </div>
                        <div class="col-3">
                            <a href="{% url 'edit_place' place.id %}"><i class="fas fa-2x fa-edit"></i> Edit </a>
                            <a href="{% url 'delete_place' place.id %}"><i class="fas fa-2x fa-trash-alt"></i>Delete</a>
                            <p class="price">Price {{ place.price_per_night }} PLN/per night<p>
                        </div>
-
-
                       </div>
                   <div class="row">
                       <p class="card-text">{{ place.description }}</p>
                   </div>
-                  <buttom class="button">ZAREZERWUJ!</buttom>
+                  <a href="{% url 'get_detail' place.id %}"><buttom class="button">RESERVE!</buttom></a>
 
 
               </div>
             </div>
-       <h3> </h3>
-        <p></p>
+
+
 
         {% endfor %}
     {% endif %}
