@@ -8,4 +8,5 @@ class PlacesAdmin(admin.ModelAdmin):
     list_filter = ("region", )
     search_fields = ("place_name", "city", "region", "object_type", "facilities")
 
+
 # Register your models here.

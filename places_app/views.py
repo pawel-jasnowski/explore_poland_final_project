@@ -35,3 +35,5 @@ def delete_place(request, id):
 
     return render(request, 'confirm_deletion.html', {'place': place})
 
+
+

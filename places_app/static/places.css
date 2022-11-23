@@ -1,0 +1,9 @@
+body {
+    padding: 2rem;
+    color: #006b1b;
+}
+
+.places-img {
+    width: 150px;
+    float: left;
+}
