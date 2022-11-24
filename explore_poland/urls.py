@@ -19,27 +19,22 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, T
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
+from user_app.views import PasswordsChangeView
 
-from review_app import views
-from review_app.models import Review
-from review_app.forms import ReviewYourReservation
-from review_app.views import SignUpView, ReviewListView, CreateReviewFormView
+# from review_app import views
+# from review_app.models import Review
+# from review_app.forms import ReviewYourReservation
+# from review_app.views import SignUpView, ReviewListView, CreateReviewFormView, feedback_form, sign_up, logout_user
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/sign_up', SignUpView.as_view(), name='sign_up'),
-    path('accounts/login/', LoginView.as_view(), name='login'),
-    path('accounts/logout/', LogoutView.as_view(), name='logout'),
-    path('review/create', CreateReviewFormView.as_view()),
-    
-#   path('review/create', CreateView.as_view(template_name='form2_karola.html', form_class=ReviewYourReservation, # zmiana FORM => FORM2_KAROLA
-#                                              success_url=reverse_lazy('review_all')), name='create_review'),
-    path('review/update/<pk>', UpdateView.as_view(template_name='form.html', model=Review, form_class=ReviewYourReservation, success_url=reverse_lazy('review_all')), name='update_review'),
-    path('review/delete/<pk>', DeleteView.as_view(template_name='delete.html', model=Review, success_url=reverse_lazy('review_all'))),
-    path('review/all', ListView.as_view(template_name='review_all.html', model=Review), name='review_all'),
-    path('review_all', ReviewListView.as_view()),
     path('explore/', include('home_page_app.urls')),
+    path('user/', include('user_app.urls')),
+    path('user/', include('django.contrib.auth.urls')), #  build in function for user
+    path('review/', include('review_app.urls')),
+    path('password/', PasswordsChangeView.as_view(template_name='authenticate/change_password.html'), name='password_change'),
+
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

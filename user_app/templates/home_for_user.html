@@ -2,19 +2,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Review Your Reservation</title>
+    <title>Szablon</title>
 
-    <link rel="stylesheet" href="{% static 'new2.css' %}">
+    <link rel="stylesheet" href="{% static 'new.css' %}">
 </head>
 
 <body>
+<br/>
+<h1>Hello, {{ user.username|default:'Guest! How are You?' }}!</h1>
 <div id="wrapper">
 
     <div id="menu">
         <ul>
-            {% if user.is_authenticated %}
+           {% if user.is_authenticated %}
                 <li> <a href="{% url 'logout_user' %}">Logout</a></li>
                 <li> <a href="{% url 'profile_edit' %}">Edit Profile</a></li>
              {% else %}
@@ -25,30 +26,26 @@
                 <li><a href="{% url 'main' %}">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="{% url 'create_review' %}">Offer</a></li>
+
         </ul>
     </div>
     <div id="logo">
         <img src="{% static 'homepage/explore_poland.jpg'%}" style="width: 980px;">
-
-
-         <h2 id="fh2">Hello {{ user.username }},</h2>
-        <h2 id="fh2">WE APPRECIATE YOUR REVIEW!</h2>
-        <h2 id="fh2">tutaj powinno być info jakiej rezerwacji dotyczy review ???</h2>
-        <h2 id="fh2">Thank You !</h2>
-        <h5 id="fh5">Your review will help us to improve our web hosting quality products, and customer services.</h5>
-        <div class="container">
-            <div class="jumbotron">
-
-                {% block content %}{% endblock %}
-            </div>
-        </div>
-
     </div>
+    <div class="container">
+      <div class="jumbotron">
 
-
-
-</div>
-
+        {% block content %}{% endblock %}
+          {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                 {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+          {% endif %}
+      </div>
+    </div>
 
 </body>
 </html>

@@ -1,10 +1,21 @@
 from django.forms import ModelForm, CharField, IntegerField, Textarea
+from django import forms
 from django.core.exceptions import ValidationError
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Review
 
+RATING_CHOICES = [
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5'),
+    ('6', '6'),
+    ('7', '7'),
+    ('8', '8'),
+    ('9', '9'),
+    ]
+class CreateReview(ModelForm):
 def rating_validator(value):
     pass
 
@@ -15,8 +26,13 @@ class ReviewYourReservation(LoginRequiredMixin, ModelForm):
 
     class Meta:
         model = Review
-        fields ='__all__'
+        fields = "__all__"  # all fields from model Review
+        # fields = ('rating', 'review_body')
 
-    rating = IntegerField (min_value=0, max_value=9)          # walidacja ? / np. punktacja 0-10
-    review_body = CharField(max_length=500, widget=Textarea)     # jakieś validacje dotyczące tego pola ?! np= zakaz przekleństw
-   
+        widgets = {
+            'rating': forms.Select(attrs={'class':'form-control'}, choices=RATING_CHOICES),
+            'review_body': forms.Textarea (attrs={'class':'form-control'}),
+        }
+
+
+

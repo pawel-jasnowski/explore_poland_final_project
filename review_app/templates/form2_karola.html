@@ -1,31 +1,34 @@
 {% extends "review_form_karola.html" %}
 
 {% block content %}
- <form method="post">
+<form method="post">
    {% csrf_token %}
+    {{ form }}
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<form id="feedback" action="">
-  <div class="pinfo">Your name as a login user</div>
+    <form id="feedback" action="">
+  <div class="pinfo"> Your name is: {{ user.username }} </div>
 
-<div class="form-group">
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="fa fa-user"></i></span>
-  <input  name="name" placeholder="Username" class="form-control"  type="text">
-    </div>
-  </div>
-</div>
+
+<!--<div class="form-group">-->
+<!--  <div class="col-md-4 inputGroupContainer">-->
+<!--  <div class="input-group">-->
+<!--  <span class="input-group-addon"><i class="fa fa-user"></i></span>-->
+<!--  <input  name="name" placeholder="Username" class="form-control"  type="text" >-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 
  <div class="pinfo">Rate our overall services.</div>
 
-
 <div class="form-group">
   <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
+  <div class="form-group">
   <span class="input-group-addon"><i class="fa fa-heart"></i></span>
-   <select class="form-control" id="rate">
+   <select class="form-control" id="rating">
       <option value="1star">1</option>
       <option value="2stars">2</option>
       <option value="3stars">3</option>
@@ -47,7 +50,7 @@
   <div class="col-md-4 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
-  <textarea class="form-control" id="review" rows="3"></textarea>
+  <textarea class="form-control" id="review_body" rows="7"></textarea>
 
     </div>
   </div>

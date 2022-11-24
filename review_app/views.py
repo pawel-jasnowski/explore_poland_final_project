@@ -1,24 +1,39 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView, FormView, View
+from django.shortcuts import render, redirect, reverse
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+
+from .forms import CreateReview, SignUpForm
 
 from review_app.models import Review
-from review_app.forms import ReviewYourReservation
-from .forms import SignUpForm
+# from .forms import ReviewYourReservation, CreateReview
 # Create your views here.
 
-def review(request):
-    return HttpResponse('Review .. ')
+# def create_new_review(request):
+#     return render(request, 'home.html')
 
+def create_new_review(request):
+    if request.user.is_authenticated:
+         # Do something for logged-in users.
+        if request.method == 'POST':
+            form = CreateReview(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('main')
+        else:
+             form = CreateReview()
+        return render(request, 'create_review_test.html', {'form': form})
+    else:
+        # Do something for anonymous users.
+        return redirect('login_user')
+
+#
+# def ReviewList(LoginRequiredMixin, ListView):
+#     template_name = 'review_form_karola.html'
 class CreateReviewFormView(LoginRequiredMixin, CreateView):
     template_name = 'form2_karola.html'
     form_class = ReviewYourReservation
     success_url = reverse_lazy('review_all')
 
-class ReviewListView(LoginRequiredMixin, ListView):
-    template_name = 'review_all.html'
-    model = Review
 
-    
+
