@@ -5,15 +5,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Review
 
-class SignUpForm(UserCreationForm):
-
-    class Meta(UserCreationForm.Meta):
-        fields = ['username', 'first_name', 'email']
-
-        def save(self, commit=True):
-            self.instance.is_active=False
-            return super().save(commit)
-
 def rating_validator(value):
     pass
 
