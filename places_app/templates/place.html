@@ -3,24 +3,7 @@
 {#{% load bootstrap %}#}
 
 {% block title %} Lista ofert {% endblock %}
-
 {% block site %}
-<div>
-    <ul>
-        {% for place in queryset %}
-            <li>
-            {{ places.region }}
-            </li>
-
-        {% endfor %}
-    </ul>
-
-</div>
-    <form method="get">
-
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
-
     <a href="{% url 'new_place' %}"> Add place </a>
 
     {% if places|length == 0 %}
@@ -28,8 +11,10 @@
     {% else %}
          <h2>Tu będą oferty: {{ places|length }}</h2>
         {% for place in places %}
+
             <div class="card">
               <div class="card-body">
+
                   <img src="{{ MEDIA_URL }}{{ place.images }}" class="places-img">
                   <div class="row">
                       <div class="col-9">

@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import DetailView
 
+from .filters import PlacesFilter
 from .models import Places
 from .forms import PlacesForm
-from .filters import PlacesFilter
+
 
 
 
@@ -18,6 +18,8 @@ from .filters import PlacesFilter
 
 def all_places(request):
     all_offers = Places.objects.all()
+    # filter_offers = PlacesFilter(request.GET, queryset=all_offers)
+    # return render(request, 'place.html', {'filter': filter_offers})
     return render(request, 'place.html', {'places': all_offers})
 
 # def filter(request):
@@ -67,5 +69,8 @@ def get_detail(request, id):
     return render(request, "detail.html", {'place': place} )
 
 
-
+def place_filter(request):
+    all_offers = Places.objects.all()
+    filter_offers = PlacesFilter(request.GET, queryset=all_offers)
+    return render(request, 'filter.html', {'filter': filter_offers})
 

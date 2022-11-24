@@ -1,8 +1,9 @@
 from django.urls import path
-from places_app.views import all_places, new_place, edit_place, delete_place, get_detail
+from places_app.views import all_places, new_place, edit_place, delete_place, get_detail, place_filter
 
 
 urlpatterns = [
+    path('place_filter/', place_filter, name='place_filter'),
     path('places/', all_places, name='all_places'),
     path('new/', new_place, name='new_place'),
     path('edit/<int:id>/', edit_place, name='edit_place'),
