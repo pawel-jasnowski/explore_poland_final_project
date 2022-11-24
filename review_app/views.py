@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
 from .forms import CreateReview
@@ -14,15 +12,20 @@ from review_app.models import Review
 #     return render(request, 'home.html')
 
 def create_new_review(request):
-    submitted = False
-    if request.method == 'POST':
-        form = CreateReview(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('main')
+    if request.user.is_authenticated:
+         # Do something for logged-in users.
+        if request.method == 'POST':
+            form = CreateReview(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('main')
+        else:
+             form = CreateReview()
+        return render(request, 'create_review_test.html', {'form': form})
     else:
-        form = CreateReview()
-    return render(request, 'create_review_test.html',{'form': form})
+        # Do something for anonymous users.
+        return redirect('login_user')
+
 #
 # def ReviewList(LoginRequiredMixin, ListView):
 #     template_name = 'review_form_karola.html'

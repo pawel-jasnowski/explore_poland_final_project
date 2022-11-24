@@ -1,26 +1,42 @@
 {% extends 'home_for_user.html' %}
 
 {% block content %}
-<h2>Login</h2>
-<br/>
+<h2 xmlns="http://www.w3.org/1999/html">Login</h2>
+<br/><br/>
 
-<form method="post">
+<div class="form-class">
+<form method="POST">
     {% csrf_token %}
+    <div class="from-group">
+      <input type="text" class="from-control" name="username" placeholder="username">
+    </div>
 
-    <form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Username</label>
-    <input type="text" class="form-control" name="username">
+  <div class="from-group">
+      <input type="password" class="from-control" name="password" placeholder="password">
+    </div>
 
+  <br/>
+    <button class="btn btn-secondary"> Login </button>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" name="password">
-  </div>
-    <input type="submit" value="Login">
-    <br></br>
-    <a href="{% url 'main' %}">Go back to main page here</a>
-  </form>
+
+
 </form>
 
 {% endblock %}
+
+
+<!-- <form>-->
+<!--  <div class="mb-3">-->
+<!--    <label for="exampleInputEmail1" class="form-label">Username</label>-->
+<!--    <input type="text" class="form-control" name="username">-->
+
+<!--  </div>-->
+<!--  <div class="mb-3">-->
+<!--    <label for="exampleInputPassword1" class="form-label">Password</label>-->
+<!--    <input type="password" class="form-control" name="password">-->
+<!--  </div>-->
+<!--    <input type="submit" value="Login">-->
+<!--    <br></br>-->
+<!--      <a href="{% url 'main' %}">Go back to main page here</a>-->
+
+<!--  </form>-->

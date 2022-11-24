@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
+from django.views import generic
 
-from .forms import RegisterUserForm
+from .forms import RegisterUserForm, PasswordChangingForm, EditProfileForm
 
 
-# Create your views here.
 
 def login_user(request):
     if request.method == 'POST': # user post smth on page
@@ -43,3 +45,17 @@ def register_user(request):
     else:
         form = RegisterUserForm()
     return render(request, 'authenticate/register_user.html', {'form':form,})
+
+class PasswordsChangeView(PasswordChangeView):
+    # form_class = PasswordChangeForm
+    form_class = PasswordChangingForm
+    success_url = reverse_lazy('main')
+
+class UserEditView(generic.UpdateView):
+    form_class = EditProfileForm
+    template_name = 'authenticate/edit_profile.html'
+    success_url = reverse_lazy('main')
+
+    def get_object(self):
+        return self.request.user
+

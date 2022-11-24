@@ -3,7 +3,7 @@ from django.views.generic import ListView
 from .import views
 
 urlpatterns = [
-    path('create/', views.create_new_review, name='create_review'),
+    path('create_review/', views.create_new_review, name='create_review'),
     # path('create', views.create_new_review, name='create_review'),
     # path('view', views.ReviewList, name='view_review'),
 

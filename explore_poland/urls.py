@@ -19,6 +19,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, T
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
+from user_app.views import PasswordsChangeView
 
 # from review_app import views
 # from review_app.models import Review
@@ -32,6 +33,7 @@ urlpatterns = [
     path('user/', include('user_app.urls')),
     path('user/', include('django.contrib.auth.urls')), #  build in function for user
     path('review/', include('review_app.urls')),
+    path('password/', PasswordsChangeView.as_view(template_name='authenticate/change_password.html'), name='password_change'),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

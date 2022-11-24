@@ -9,15 +9,24 @@
 </head>
 
 <body>
-
+<br/>
+<h1>Hello, {{ user.username|default:'Guest! How are You?' }}!</h1>
 <div id="wrapper">
 
     <div id="menu">
         <ul>
-            <li><a href="{% url 'main' %}">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Offer</a></li>
-            <li><a href="{% url 'login_user' %}">Login</a></li>
+           {% if user.is_authenticated %}
+                <li> <a href="{% url 'logout_user' %}">Logout</a></li>
+                <li> <a href="{% url 'profile_edit' %}">Edit Profile</a></li>
+             {% else %}
+                <li><a href="{% url 'login_user' %}">Login</a></li>
+                <li><a href="{% url 'register_user' %}">Register</a></li>
+            {% endif %}
+
+                <li><a href="{% url 'main' %}">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="{% url 'create_review' %}">Offer</a></li>
+
         </ul>
     </div>
     <div id="logo">

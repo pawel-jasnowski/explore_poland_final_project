@@ -3,10 +3,9 @@
 {% block content %}
 <form method="post" xmlns="http://www.w3.org/1999/html">
      {% csrf_token %}
-
+<!--    {{ form.as_p }}-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <form id="feedback" action= "" method="POST"  >
-
 
   <div class="pinfo"> Your name is : {{ user.username }} </div>
         <div class="pinfo">Rate our overall services.</div>
