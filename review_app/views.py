@@ -2,15 +2,14 @@ from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .forms import CreateReview, SignUpForm
+from .forms import CreateReview
 
 from review_app.models import Review
 # from .forms import ReviewYourReservation, CreateReview
 # Create your views here.
 
-# def create_new_review(request):
-#     return render(request, 'home.html')
 
 def create_new_review(request):
     if request.user.is_authenticated:
@@ -30,10 +29,10 @@ def create_new_review(request):
 #
 # def ReviewList(LoginRequiredMixin, ListView):
 #     template_name = 'review_form_karola.html'
-class CreateReviewFormView(LoginRequiredMixin, CreateView):
-    template_name = 'form2_karola.html'
-    form_class = ReviewYourReservation
-    success_url = reverse_lazy('review_all')
+# class CreateReviewFormView(LoginRequiredMixin, CreateView):
+#     template_name = 'form2_karola.html'
+#     form_class = ReviewYourReservation
+#     success_url = reverse_lazy('review_all')
 
 
 
