@@ -15,4 +15,4 @@ class PlacesFilter(django_filters.FilterSet):
     #                                         coerce=strtobool)
     class Meta:
         model = Places
-        fields = ['region', 'object_type']
+        fields = ['object_type', 'facilities']

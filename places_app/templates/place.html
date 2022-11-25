@@ -2,7 +2,8 @@
 {% load static %}
 {#{% load bootstrap %}#}
 
-{% block title %} Lista ofert {% endblock %}
+{% block title %} Lista ofert
+{% endblock %}
 {% block site %}
     <a href="{% url 'new_place' %}"> Add place </a>
 
@@ -10,7 +11,8 @@
          <h2> Brak ofert miejsc. </h2>
     {% else %}
          <h2>Tu będą oferty: {{ places|length }}</h2>
-        {% for place in places %}
+        <h2>OFFERS: {{ object_list|length }}</h2>
+        {% for place in object_list %}
 
             <div class="card">
               <div class="card-body">

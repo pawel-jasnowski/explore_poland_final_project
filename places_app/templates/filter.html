@@ -1,3 +1,4 @@
+
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -19,9 +20,10 @@
 
         <ul>
         {% for place in filter.qs %}
-            <div class="card">
-<div class="card-body">
 
+
+<div class="card">
+            <div class="card-body">
                   <img src="{{ MEDIA_URL }}{{ place.images }}" class="places-img">
                   <div class="row">
                       <div class="col-9">

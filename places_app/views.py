@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView, View
 
 from .filters import PlacesFilter
 from .models import Places
@@ -16,18 +17,15 @@ from .forms import PlacesForm
 #     }
 #     return render(request, 'place.html', context)
 
+class PlacesView(View):
+    template_name="place.html"
+    def get(self, request):
+        return render(request, template_name='place.html', context={'places': Places.objects.all()})
 def all_places(request):
     all_offers = Places.objects.all()
     # filter_offers = PlacesFilter(request.GET, queryset=all_offers)
     # return render(request, 'place.html', {'filter': filter_offers})
     return render(request, 'place.html', {'places': all_offers})
-
-# def filter(request):
-#     place = Places.objects.get(pk=id)
-#     myFilter = PlacesFilter()
-#     context={'place':place, "myFilter":myFilter}
-#     return render(request, 'place.html', context)
-
 
 def new_place(request):
     form = PlacesForm(request.POST or None, request.FILES or None)
@@ -74,3 +72,9 @@ def place_filter(request):
     filter_offers = PlacesFilter(request.GET, queryset=all_offers)
     return render(request, 'filter.html', {'filter': filter_offers})
 
+class MountainView(ListView):
+    # all_offers = Places.objects.all()
+    template_name="place.html"
+
+    def get_queryset(self):
+        return Places.objects.filter(region__startswith='M')
