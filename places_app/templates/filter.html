@@ -13,17 +13,15 @@
 <body>
 
 {% csrf_token %}
-
     <form method="get">
     {{ filter.form.as_p }}
+
         <button type="submit">Search</button>
 
-        <ul>
         {% for place in filter.qs %}
 
-
 <div class="card">
-            <div class="card-body">
+		<div class="card-body">
                   <img src="{{ MEDIA_URL }}{{ place.images }}" class="places-img">
                   <div class="row">
                       <div class="col-9">
@@ -41,18 +39,17 @@
                            <a href="{% url 'delete_place' place.id %}"><i class="fas fa-2x fa-trash-alt"></i>Delete</a>
                            <p class="price">Price {{ place.price_per_night }} PLN/per night<p>
                        </div>
-                      </div>
+				  </div>
                   <div class="row">
                       <p class="card-text">{{ place.description }}</p>
                   </div>
                   <a href="{% url 'get_detail' place.id %}"><buttom class="button">RESERVE!</buttom></a>
 
 
-              </div>
-            </div>
+		</div>
+</div>
         {% endfor %}
 
-
-    </form>
+        </form>
 </body>
 </html>

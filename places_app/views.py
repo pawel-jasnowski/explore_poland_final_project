@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, View
+from django.views.generic import ListView
 
 from .filters import PlacesFilter
 from .models import Places
@@ -17,10 +17,10 @@ from .forms import PlacesForm
 #     }
 #     return render(request, 'place.html', context)
 
-class PlacesView(View):
-    template_name="place.html"
-    def get(self, request):
-        return render(request, template_name='place.html', context={'places': Places.objects.all()})
+# class PlacesView(View):
+#     template_name="place.html"
+#     def get(self, request):
+#         return render(request, template_name='place.html', context={'places': Places.objects.all()})
 def all_places(request):
     all_offers = Places.objects.all()
     # filter_offers = PlacesFilter(request.GET, queryset=all_offers)
@@ -73,8 +73,16 @@ def place_filter(request):
     return render(request, 'filter.html', {'filter': filter_offers})
 
 class MountainView(ListView):
-    # all_offers = Places.objects.all()
     template_name="place.html"
-
     def get_queryset(self):
-        return Places.objects.filter(region__startswith='M')
+        return Places.objects.filter(region__exact='Mountains').all()
+
+class LakesView(ListView):
+    template_name="place.html"
+    def get_queryset(self):
+        return Places.objects.filter(region__exact='Lakes').all()
+
+class SeaView(ListView):
+    template_name="place.html"
+    def get_queryset(self):
+        return Places.objects.filter(region__exact='Sea').all()
