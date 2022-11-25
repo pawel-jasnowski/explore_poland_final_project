@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -133,3 +133,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/explore/home_page'
 LOGOUT_REDIRECT_URL = '/explore/home_page'
+
+# email stuff ##################
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'pawel.jasnowski@gmail.com'
+EMAIL_HOST_USER = 'pawel.jasnowski@gmail.com'
+EMAIL_HOST_PASSWORD = 'ejqltwuwxxnlbeiv'
+DEFAULT_FROM_EMAIL = 'pawel.jasnowski@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+PASSWORD_RESET_TIMEOUT = 14400 # token will be valid for 4hours
