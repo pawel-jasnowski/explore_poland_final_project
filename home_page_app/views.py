@@ -6,3 +6,6 @@ def test_response(request):
 
 def test_page(request):
     return render(request, 'home_page.html')
+
+
+

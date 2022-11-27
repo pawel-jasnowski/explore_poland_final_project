@@ -37,3 +37,6 @@ def delete_place(request, id):
 
 
 
+
+
+

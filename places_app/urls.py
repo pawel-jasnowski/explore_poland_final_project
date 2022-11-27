@@ -6,4 +6,5 @@ urlpatterns = [
     path('new/', new_place, name='new_place'),
     path('edit/<int:id>/', edit_place, name='edit_place'),
     path('delete/<int:id>/', delete_place, name='delete_place')
+
 ]
