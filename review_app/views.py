@@ -28,7 +28,10 @@ def create_new_review(request):
         return redirect('login_user')
 
 #
-def view_all_reviews(ListView):
-    template_name = 'review_form.html'
-#
+def view_all_reviews(request):
+    return render(
+        request,
+        template_name='review_form_karola.html',
+        context={'reviews': Review.objects.all()}
+    )
 
