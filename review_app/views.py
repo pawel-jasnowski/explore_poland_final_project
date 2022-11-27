@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
+# from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import View
 
 from .forms import CreateReview
 
@@ -24,14 +25,18 @@ def create_new_review(request):
         return render(request, 'create_review_test.html', {'form': form})
     else:
         # Do something for anonymous users.
-        messages.success(request, f'You must be loged it to add some review!')
+        messages.success(request, f'You must be logged it to add some review!')
         return redirect('login_user')
 
-#
+class ReviewView(View):
+    def get(self, request):
+        return render(
+            request, template_name='review_all.html', context={'review': Review.objects.all()}
+        )
 def view_all_reviews(request):
     return render(
         request,
-        template_name='review_form_karola.html',
-        context={'reviews': Review.objects.all()}
-    )
+        template_name='review_all.html',
+        context={'review': Review.objects.all()})
+
 

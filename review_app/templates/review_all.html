@@ -1,48 +1,24 @@
-{% load static%}
+{% extends "base.html" %}
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Review Your Reservation</title>
-
-    <link rel="stylesheet" href="{% static 'new.css' %}">
-</head>
-
-<body>
-<div id="wrapper">
-
-    <div id="menu">
-        <ul>
-            <li><a href="/explore/home_page/">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Offer</a></li>
-            <li><a href="#">Login</a></li>
-        </ul>
-    </div>
-    <div id="logo">
-        <img src="{% static 'homepage/explore_poland.jpg'%}" style="width: 980px;">
-        <center><p><h1>You can look for your recent reviews here:</h1></p></center>
-        <center>
-         {% for review in object_list %}
-           <p>
-               <tr>
-                    <td> <b>Review id:</b> {{ review.id }} </td>
-                    <td> <b>Your review:</b> {{ review.review_body }}</td>
-                    <td> <b>Your overall rating is:</b> {{ review.rating }}</td>
-               </tr>
-               Would You like to <a href="/review/update/{{ review.id }}">UPDATE</a> this review?
-               Would You like to <a href="/review/delete/{{ review.id }}">DELETE</a> this review?
-        </p>
-            {% endfor %}
-        </center>
-        </div>
-
-    </div>
-
-
-
-</div>
-
-
-</body>
-</html>
+{% block content %}
+    <table>
+        <tr>
+            <td><b>Title</b></td>
+            <td><b>Genre</b></td>
+            <td><b>Rating</b></td>
+            <td><b>Released</b></td>
+            <td><b>Description</b></td>
+            <td><b>Created</b></td>
+        </tr>
+        {% for movie in movies %}
+            <tr>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.genre }}</td>
+                <td>{{ movie.rating }}</td>
+                <td>{{ movie.released }}</td>
+                <td>{{ movie.description }}</td>
+                <td>{{ movie.created }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
