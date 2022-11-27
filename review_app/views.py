@@ -24,15 +24,11 @@ def create_new_review(request):
         return render(request, 'create_review_test.html', {'form': form})
     else:
         # Do something for anonymous users.
+        messages.success(request, f'You must be loged it to add some review!')
         return redirect('login_user')
 
 #
-# def ReviewList(LoginRequiredMixin, ListView):
-#     template_name = 'review_form_karola.html'
-# class CreateReviewFormView(LoginRequiredMixin, CreateView):
-#     template_name = 'form2_karola.html'
-#     form_class = ReviewYourReservation
-#     success_url = reverse_lazy('review_all')
-
-
+def view_all_reviews(ListView):
+    template_name = 'review_form.html'
+#
 

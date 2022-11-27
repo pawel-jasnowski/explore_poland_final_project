@@ -4,7 +4,6 @@ from .import views
 
 urlpatterns = [
     path('create_review/', views.create_new_review, name='create_review'),
-    # path('create', views.create_new_review, name='create_review'),
-    # path('view', views.ReviewList, name='view_review'),
+    path('view_all_reviews/', views.view_all_reviews, name='view_review'),
 
     ]

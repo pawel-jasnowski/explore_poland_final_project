@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'explore_poland_app',
     'home_page_app',
     'review_app',
-    'user_app'
+    'user_app',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -123,6 +124,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 
+CRISPY_TEMPLATE_PACK ='bootstrap4'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'explore_media'
 
@@ -144,4 +147,4 @@ DEFAULT_FROM_EMAIL = 'pawel.jasnowski@gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-PASSWORD_RESET_TIMEOUT = 14400 # token will be valid for 4hours
+PASSWORD_RESET_TIMEOUT = 14400 # token will be valid for 4hours in this case

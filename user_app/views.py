@@ -32,7 +32,7 @@ def login_user(request):
             return redirect('main')
         else:
                 # Return an 'invalid login' error message.
-            messages.success(request, ('There was a login error. Try again'))
+            messages.success(request, f'There was a login error. Try again')
             return redirect('login_user')  # if smth goes wrong with login - then 'login' page again
     else:
         return render(request, 'authenticate/login.html', {})   # show page to user on site
@@ -56,7 +56,7 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
 
-        messages.success(request, "Thank You for your email confirmation. You can login now to your account")
+        messages.success(request, f"Thank You for your email confirmation. {user.username} - You can login now to your account")
         return redirect('login_user')
     else:
         messages.erros(request, "Activation link is invalid!")
@@ -76,7 +76,7 @@ def activateEmail(request, user, to_email):
     })
     email = EmailMessage(mail_subject, message, to=[to_email])
     if email.send():
-        messages.success(request, f'Dear user go to Your email: {to_email} ,and please confirm your registration')
+        messages.success(request, f'Dear {user.username} go to Your email: {to_email}, and please confirm your registration')
     else:
         messages.error(request,f'There was some probem sending email')
 #################################
@@ -96,8 +96,8 @@ def register_user(request):
             # email = form.cleaned_data['email']
             # user = authenticate(username=username, password=password, email=email)
             # login(request, user)
-            # messages.success(request, 'Registration successful!')   #doesnt work .... !
-            return redirect('main')
+            messages.success(request, f'New account created for {user.username}')   #doesnt work .... !
+            return redirect('login_user')
     else:
         form = RegisterUserForm()
     return render(request, 'authenticate/register_user.html', {'form':form,})

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Szablon</title>
+    <title>Explore Poland</title>
 
     <link rel="stylesheet" href="{% static 'new.css' %}">
 </head>
@@ -34,16 +34,16 @@
     </div>
     <div class="container">
       <div class="jumbotron">
-
+         {% include 'authenticate/messaging.html' %}
         {% block content %}{% endblock %}
-          {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                 {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            {% endfor %}
-          {% endif %}
+<!--          {% if messages %}-->
+<!--            {% for message in messages %}-->
+<!--            <div class="alert alert-warning alert-dismissible fade show" role="alert">-->
+<!--                 {{ message }}-->
+<!--            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+<!--          {% endif %}-->
       </div>
     </div>
 
