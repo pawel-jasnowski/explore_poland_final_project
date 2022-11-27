@@ -35,6 +35,15 @@ def delete_place(request, id):
 
     return render(request, 'confirm_deletion.html', {'place': place})
 
+########################## review fro places :::
+# def new_place(request):
+#     form = PlacesForm(request.POST or None, request.FILES or None)
+#
+#     if form.is_valid():
+#         form.save()
+#
+#     return render(request, 'place_form.html', {'form': form})
+
 
 
 
