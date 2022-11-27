@@ -31,12 +31,13 @@ def create_new_review(request):
 class ReviewView(View):
     def get(self, request):
         return render(
-            request, template_name='review_all.html', context={'review': Review.objects.all()}
+            request, template_name='review_all.html', context={'reviews': Review.objects.all()}
         )
 def view_all_reviews(request):
     return render(
         request,
-        template_name='review_all.html',
-        context={'review': Review.objects.all()})
+        template_name='review_form.html',
+        context={'reviews': Review.objects.all()}
+                    )
 
 

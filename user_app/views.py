@@ -28,6 +28,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            messages.success(request, f'Login success !')
                 # Redirect to a success page.
             return redirect('main')
         else:
@@ -39,7 +40,7 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    messages.success(request, ('You were log-out. Remember to leave some review ! See You Later - YOUR NAME HERE' ))
+    # messages.success(request, ('You were log-out. Remember to leave some review ! See You Later - YOUR NAME HERE' ))
     return redirect('main')
 
 ##################### email activation #####################
@@ -56,10 +57,11 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
 
-        messages.success(request, f"Thank You for your email confirmation. {user.username} - You can login now to your account")
+        messages.success(request, f'Thank You for your email confirmation. " {user.username} " - You can login now to your account')
         return redirect('login_user')
+        # return render(request, 'landing page/index.html')
     else:
-        messages.erros(request, "Activation link is invalid!")
+        messages.error(request, "Activation link is invalid!")
 
     return redirect('main')
 
@@ -70,15 +72,15 @@ def activateEmail(request, user, to_email):
 
         'user':user.username,
         'domain':get_current_site(request).domain,
-        'uid':urlsafe_base64_encode(force_bytes(user.pk)), #primary key converet to string
+        'uid':urlsafe_base64_encode(force_bytes(user.pk)), #primary key converter
         'token':account_activation_token.make_token(user),
         "Protocol":'https' if request.is_secure() else 'http'
     })
     email = EmailMessage(mail_subject, message, to=[to_email])
     if email.send():
-        messages.success(request, f'Dear {user.username} go to Your email: {to_email}, and please confirm your registration')
+        messages.success(request, f'Dear  " {user.username} " go to Your email: {to_email}, and please confirm your registration')
     else:
-        messages.error(request,f'There was some probem sending email')
+        messages.error(request,f'There was some problem sending email')
 #################################
 def register_user(request):
     if request.method == 'POST':
@@ -96,7 +98,6 @@ def register_user(request):
             # email = form.cleaned_data['email']
             # user = authenticate(username=username, password=password, email=email)
             # login(request, user)
-            messages.success(request, f'New account created for {user.username}')   #doesnt work .... !
             return redirect('login_user')
     else:
         form = RegisterUserForm()

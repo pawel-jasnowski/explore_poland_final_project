@@ -1,13 +1,24 @@
 {% extends 'home_for_user.html' %}
 {% load crispy_forms_tags %}
 <!--{% include 'authenticate/messaging.html' %}-->
+
+
+
 {% block content %}
 <h2 xmlns="http://www.w3.org/1999/html">Login</h2>
+ {% for msg in messages %}
+        {{ msg }}
+    {% endfor %}
+
 <br/><br/>
 
 <div class="form-class">
+
+
+
 <form method="POST">
     {% csrf_token %}
+
      {{ form|crispy }}
     <div class="from-group">
       <input type="text" class="from-control" name="username" placeholder="username">
