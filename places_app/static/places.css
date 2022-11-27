@@ -62,5 +62,12 @@ body {
 .price {
     font-size: 20px;
     font-weight: bold;
+    text-decoration: underline;
+    text-decoration-line: underline;
 
+}
+
+.check {
+    font-size: 24px;
+    font-weight: bold;
 }
