@@ -18,7 +18,8 @@ def login_user(request):
         if user is not None:
             login(request, user)
                 # Redirect to a success page.
-            return redirect('main')
+            return render(request, 'home_for_user.html', {})
+            # return redirect('main') # NOT WORKINH THIS WAY  ???
         else:
                 # Return an 'invalid login' error message.
             messages.success(request, ('There was a login error. Try again'))
@@ -27,9 +28,12 @@ def login_user(request):
         return render(request, 'authenticate/login.html', {})   # show page to user on site
 
 def logout_user(request):
+
     logout(request)
-    messages.success(request, ('You were log-out. Remember to leave some review ! See You Later - YOUR NAME HERE' ))
-    return redirect('main')
+    messages.success(request, f'You were log-out. See You later!')
+    return render(request, 'home_for_user.html', {})
+
+    # return redirect('main')  NOT WORKING HIS WAY ???
 
 def register_user(request):
     if request.method == 'POST':
@@ -41,7 +45,8 @@ def register_user(request):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.success(request, ('Registration successful!'))
-            return redirect('main')
+            return render(request, 'home_for_user.html', {})
+            # return redirect('main') # NOT WORKING tHIS WAY
     else:
         form = RegisterUserForm()
     return render(request, 'authenticate/register_user.html', {'form':form,})
@@ -49,12 +54,12 @@ def register_user(request):
 class PasswordsChangeView(PasswordChangeView):
     # form_class = PasswordChangeForm
     form_class = PasswordChangingForm
-    success_url = reverse_lazy('main')
+    success_url = reverse_lazy('home_page_app:main')
 
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm
     template_name = 'authenticate/edit_profile.html'
-    success_url = reverse_lazy('main')
+    success_url = reverse_lazy('home_page_app:main')
 
     def get_object(self):
         return self.request.user

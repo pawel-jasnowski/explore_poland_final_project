@@ -6,7 +6,7 @@ class PlacesImageAdmin(admin.StackedInline):
 @admin.register(Places)
 class PlacesAdmin(admin.ModelAdmin):
     inlines = [PlacesImageAdmin]
-    fields =  ["place_name", "city", "region", "object_type", "facilities", "price_per_night", "description"]
+    fields =  ["place_name", "city", "region", "object_type", "facilities", "price_per_night", "description", "images"]
     list_display = ["place_name", "city", "region", "object_type", "price_per_night"]
     list_filter = ("region", )
     search_fields = ("place_name", "city", "region", "object_type", "facilities")

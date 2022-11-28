@@ -18,7 +18,7 @@ def create_new_review(request):
             form = CreateReview(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('main')
+                return redirect('home_page_app:main')
         else:
              form = CreateReview()
         return render(request, 'create_review_test.html', {'form': form})

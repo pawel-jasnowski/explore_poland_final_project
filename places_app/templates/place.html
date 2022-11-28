@@ -15,7 +15,8 @@
         {% for place in places %}
             <div class="card" style="width: 26rem;">
               <div class="card-body">
-                  <img src="{{ MEDIA_URL }}{{ place.images }}" class="places-img">
+<!--                  <img src="{{ MEDIA_URL }}{{ place.images }}" class="places-img">-->
+                  <img src="{{ 'media' }}{{ place.images }}" class="places-img">
                   <div class="row">
                       <div class="col-9">
                           <h5 class="card-title">{{ place.place_name }}</h5>

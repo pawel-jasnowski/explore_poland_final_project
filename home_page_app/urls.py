@@ -5,5 +5,6 @@ from django.views.generic import TemplateView
 app_name = 'home_page_app'
 urlpatterns = [
     path('home/', test_response),
-    path('home_page/', test_page, name='main')
+    path('home_page/', test_page, name='main'),
+    # path('', test_page, name='main'),
 ]

@@ -29,6 +29,7 @@ from user_app.views import PasswordsChangeView
 
 
 urlpatterns = [
+    # path('', include('home_page_app.urls')),
     path('admin/', admin.site.urls),
     path('explore/', include('home_page_app.urls')),
     path('user/', include('user_app.urls')),

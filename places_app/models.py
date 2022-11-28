@@ -1,4 +1,4 @@
-from django.db.models import Model, CharField, TextField, DecimalField, FileField, ForeignKey, CASCADE
+from django.db.models import Model, CharField, TextField, DecimalField, FileField, ForeignKey, CASCADE, ImageField
 from multiselectfield import MultiSelectField
 from decimal import Decimal
 from django.core.validators import MinValueValidator
@@ -30,7 +30,7 @@ class Places(Model):
     price_per_night = DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(Decimal('50.00'))])
     facilities = MultiSelectField(choices=FACILITIES_CHOICES,  max_choices=10,  max_length=100, blank=False, null=False, default='')
     description = TextField(null=False)
-    image = FileField(null=False, blank=False, default="")
+    images = ImageField(upload_to="places_img", null=False, blank=False, default="")
 
 
     def __str__(self):
@@ -38,7 +38,7 @@ class Places(Model):
 
 class PlacesImage(Model):
     places = ForeignKey(Places, default=None, on_delete=CASCADE)
-    images = FileField(upload_to="places_img")
+    images = ImageField(upload_to="places_img")
 
 
 

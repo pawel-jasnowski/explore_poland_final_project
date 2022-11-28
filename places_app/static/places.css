@@ -1,9 +1,83 @@
 body {
-    padding: 2rem;
+    padding: 5rem;
     color: #006b1b;
-}
 
+
+}
+.container{
+    background-color: #8ca05e;
+    border-block-color: #8ca05e;
+
+}
 .places-img {
     width: 150px;
     float: left;
 }
+
+.card{
+    border: solid;
+
+}
+.card-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.facilities{
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.region{
+    font-size: 20px;
+    text-decoration: underline;
+    text-decoration: solid;
+}
+
+.button {
+  border: solid;
+    border-color: #006b1b;
+  color: white;
+  background-color: #8ca05e;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: underline;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.columns {
+  float: left;
+  width: 33.3%;
+  padding: 8px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-line: underline;
+
+}
+
+.check {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.text {
+    font-size: 10px;
+}
+
+
+
+
+
+
