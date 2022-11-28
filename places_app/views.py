@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView
 
 from .filters import PlacesFilter
-from .models import Places
+from .models import Places, PlacesImage
 from .forms import PlacesForm
 
 
@@ -25,7 +25,7 @@ def all_places(request):
     all_offers = Places.objects.all()
     # filter_offers = PlacesFilter(request.GET, queryset=all_offers)
     # return render(request, 'place.html', {'filter': filter_offers})
-    return render(request, 'place.html', {'places': all_offers})
+    return render(request, 'filter.html', {'places': all_offers})
 
 def new_place(request):
     form = PlacesForm(request.POST or None, request.FILES or None)
@@ -57,14 +57,14 @@ def delete_place(request, id):
 
 
 def get_detail(request, id):
-    # place=Places.objects.get(pk=id)
-    # return render(request, 'detail.html',{{'place':place}})
     place = get_object_or_404(Places, pk=id)
-
+    images=PlacesImage.objects.filter(places=place.id)
+    for image in images:
+        print(image.images.url)
     if request.method == "POST":
         place.detail()
         return redirect(place)
-    return render(request, "detail.html", {'place': place} )
+    return render(request, "detail.html", {'place': place, 'images': images} )
 
 
 def place_filter(request):

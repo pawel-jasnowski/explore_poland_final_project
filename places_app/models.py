@@ -1,4 +1,4 @@
-from django.db.models import Model, CharField, TextField, ImageField, IntegerField, DecimalField
+from django.db.models import Model, CharField, TextField, ImageField, IntegerField, DecimalField, ForeignKey, FileField, CASCADE
 from django_filters import ChoiceFilter
 from multiselectfield import MultiSelectField
 from decimal import Decimal
@@ -29,16 +29,16 @@ class Places(Model):
     price_per_night = DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(Decimal('50.00'))])
     facilities = MultiSelectField(choices=FACILITIES_CHOICES,  max_choices=10,  max_length=100, blank=False, null=False, default='')
     description = TextField(null=False)
+    # image = FileField(null=False, blank=False, default="")
     images = ImageField(upload_to="places_img", null=False, blank=False)
 
 
     def __str__(self):
-        return f"{self.place_name} ({self.region},{self.city}, {self.images})"
+        return f"{self.place_name} ({self.region},{self.city})"
 
 
-# class Facilities(FilterSet):
-#     facilities = ChoiceFilter(choices=FACILITIES_CHOICES)
-#     class Meta:
-#         model = Places
-#         fields = ['facilities']
+class PlacesImage(Model):
+    places = ForeignKey(Places, default=None, on_delete=CASCADE)
+    images = ImageField(upload_to="places_img")
+
 

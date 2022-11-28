@@ -11,18 +11,20 @@
     <title>Document</title>
 </head>
 <body>
-
 {% csrf_token %}
-    <form method="get">
+
+
+    <form method="get" class="filter">
     {{ filter.form.as_p }}
 
         <button type="submit">Search</button>
 
         {% for place in filter.qs %}
 
+
 <div class="card">
 		<div class="card-body">
-                  <img src="{{ MEDIA_URL }}{{ place.images }}" class="places-img">
+                  <img src="{{ place.images.url }}" class="places-img">
                   <div class="row">
                       <div class="col-9">
                           <p class="card-title">{{ place.place_name }}</p>

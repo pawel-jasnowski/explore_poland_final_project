@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'places_app',
     'home_page_app',
     'django_filters',
+    'multiselectfield'
 ]
 
 MIDDLEWARE = [
