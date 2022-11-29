@@ -20,7 +20,7 @@ class CreateReview(ModelForm):
     class Meta:
         model = Review
         fields = "__all__"  # all fields from model Review
-        # fields = ('rating', 'review_body')
+        # fields = ('rating', 'review_body', 'user_name' )
 
         widgets = {
             'rating': forms.Select(attrs={'class':'form-control'}, choices=RATING_CHOICES),
