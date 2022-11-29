@@ -29,7 +29,7 @@ def login_user(request):
             login(request, user)
             messages.success(request, f'Login success !')
                 # Redirect to a success page.
-            return render(request, 'home_for_user.html', {})
+            return render(request, 'home_page.html', {})
             # return redirect('main')
         else:
                 # Return an 'invalid login' error message.
@@ -41,9 +41,8 @@ def login_user(request):
 def logout_user(request):
 
     logout(request)
-    # messages.success(request, ('You were log-out. Remember to leave some review ! See You Later - YOUR NAME HERE' ))
-    return redirect('main')
-
+    messages.success(request, f'You were log-out. See You Later - YOUR NAME HERE')
+    return render(request, 'home_page.html', {})
 ##################### email activation #####################
 
 def activate(request, uidb64, token):

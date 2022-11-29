@@ -20,8 +20,6 @@ FACILITIES_CHOICES = ((1, 'Swimming pool'), (2, 'Free parking outside'), (3, 'Wi
 
 
 
-
-
 class Places(Model):
     place_name = CharField(max_length=120, blank=False, unique=True)
     city = CharField(max_length=50, null=False)

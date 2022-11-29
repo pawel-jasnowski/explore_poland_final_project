@@ -23,7 +23,6 @@ class Migration(migrations.Migration):
                 ('place_name', models.CharField(max_length=120, unique=True)),
                 ('city', models.CharField(max_length=50)),
                 ('region', models.CharField(choices=[('Sea', 'Sea'), ('Mountains', 'Mountains'), ('Lakes', 'Lakes')], max_length=20)),
-                ('object_type', models.CharField(choices=[('Hotel', 'Hotel'), ('Cottage', 'Cottage'), ('Apartment', 'Apartment')], max_length=20)),
 
                 ('object_type', models.CharField(choices=[('Apartment', 'Apartment'), ('Hotel', 'Hotel'), ('Cottage', 'Cottage')], max_length=20)),
                 ('price_per_night', models.DecimalField(decimal_places=2, max_digits=10, validators=[django.core.validators.MinValueValidator(Decimal('50.00'))])),
