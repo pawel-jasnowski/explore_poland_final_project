@@ -1,4 +1,6 @@
 {% extends "home_for_user.html" %}
+{% load crispy_forms_tags %}
+
 
 {% block content %}
 
@@ -8,7 +10,7 @@
 <div class="from-group">
  <form  method=POST>
    {% csrf_token %}
-   {{ form.as_p}}
+   {{ form|crispy }}
      <br></br>
      <input type="submit" value="Change Your Profile">
 <!--   <button class="'btn btn-secondary">Update Your Profile</button>-->

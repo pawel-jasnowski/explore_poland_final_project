@@ -29,15 +29,28 @@
             <div class="container">
             <div class="jumbotron">
 
-                {% block content %}{% endblock %}
+                {% block content %}
+
+                <table>
+        <tr>
+            <td><b>ID</b></td>
+            <td><b>Rating</b></td>
+            <td><b>Review</b></td>
+        </tr>
+        {% for review in reviews %}
+            <tr>
+                <td>{{ review.id }}</td>
+                <td>{{ review.rating }} </td>
+                <td>{{ review.review_body }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+                {% endblock %}
             </div>
         </center>
         </div>
-
     </div>
-
-
-
 </div>
 
 

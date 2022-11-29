@@ -8,5 +8,6 @@ urlpatterns = [
     path('register_user', views.register_user, name='register_user'),
     path('password_change', PasswordsChangeView.as_view(template_name='authenticate/change_password.html'), name='password_change'),
     path('profile_edit', UserEditView.as_view(), name='profile_edit'),
-
+    ###################### email sending
+    path('activate/<uidb64>/<token>', views.activate, name='activate')
     ]

@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 
 from user_app.views import PasswordsChangeView
+from home_page_app.views import test_response
 
 # from review_app import views
 # from review_app.models import Review
@@ -31,6 +32,7 @@ from user_app.views import PasswordsChangeView
 urlpatterns = [
     # path('', include('home_page_app.urls')),
     path('admin/', admin.site.urls),
+    path('', test_response),
     path('explore/', include('home_page_app.urls')),
     path('user/', include('user_app.urls')),
     path('user/', include('django.contrib.auth.urls')), #  build in function for user
