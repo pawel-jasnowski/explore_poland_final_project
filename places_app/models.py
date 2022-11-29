@@ -1,5 +1,5 @@
 from django.db.models import Model, CharField, TextField, ImageField, IntegerField, DecimalField, ForeignKey, FileField, CASCADE
-from django_filters import ChoiceFilter
+from django_filters import ChoiceFilter, MultipleChoiceFilter
 from multiselectfield import MultiSelectField
 from decimal import Decimal
 from django.core.validators import MinValueValidator
@@ -35,10 +35,15 @@ class Places(Model):
 
     def __str__(self):
         return f"{self.place_name} ({self.region},{self.city})"
-
+class F(FilterSet):
+    facilities = MultipleChoiceFilter(choices=FACILITIES_CHOICES)
+    class Meta:
+        model=Places
+        fields = ['facilities']
 
 class PlacesImage(Model):
     places = ForeignKey(Places, default=None, on_delete=CASCADE)
     images = ImageField(upload_to="places_img")
+
 
 
