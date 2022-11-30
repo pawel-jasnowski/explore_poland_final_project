@@ -1,26 +1,9 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView
-
-from .filters import PlacesFilter
-from .models import Places, PlacesImage
+from .models import Places
 from .forms import PlacesForm
 
 
 
-
-# def all_places(request):
-#     qs = Places.objects.all()
-#     region = request.GET.get('region')
-#     context = {
-#         'queryset':qs
-#     }
-#     return render(request, 'place.html', context)
-
-# class PlacesView(View):
-#     template_name="place.html"
-#     def get(self, request):
-#         return render(request, template_name='place.html', context={'places': Places.objects.all()})
 def all_places(request):
     all_offers = Places.objects.all()
     # filter_offers = PlacesFilter(request.GET, queryset=all_offers)

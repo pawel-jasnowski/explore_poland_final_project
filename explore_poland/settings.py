@@ -9,13 +9,11 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 
 # Quick-start development settings - unsuitable for production
@@ -42,6 +40,9 @@ INSTALLED_APPS = [
     'explore_poland_app',
     'places_app',
     'home_page_app',
+    'review_app',
+    'user_app',
+    'crispy_forms',
     'django_filters',
     'multiselectfield'
 ]
@@ -70,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -126,11 +128,28 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 
-MEDIA_URL = 'media/'
+CRISPY_TEMPLATE_PACK ='bootstrap4'
+
+MEDIA_URL = '/media/'
 MEDIA_ROOT = 'explore_media'
 
-
+MEDIA_ROOT = 'places_app/media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/explore/home_page'
+LOGOUT_REDIRECT_URL = '/explore/home_page'
+
+# email stuff ##################
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'pawel.jasnowski@gmail.com'
+EMAIL_HOST_USER = 'pawel.jasnowski@gmail.com'
+EMAIL_HOST_PASSWORD = 'ejqltwuwxxnlbeiv'    # ask ADMIN password
+DEFAULT_FROM_EMAIL = 'pawel.jasnowski@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+PASSWORD_RESET_TIMEOUT = 14400 # token will be valid for 4hours in this case

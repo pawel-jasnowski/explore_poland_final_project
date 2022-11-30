@@ -1,10 +1,4 @@
-from django.db.models import Model, CharField, TextField, ImageField, IntegerField, DecimalField, ForeignKey, FileField, CASCADE
-from django_filters import ChoiceFilter, MultipleChoiceFilter
-from multiselectfield import MultiSelectField
-from decimal import Decimal
-from django.core.validators import MinValueValidator
-from django_filters import FilterSet
-
+from django.db.models import Model, CharField, TextField, ImageField, IntegerField
 
 REGION = {
     ("Sea", "Sea"),

@@ -1,0 +1,54 @@
+{% load static%}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Explore Poland</title>
+
+    <link rel="stylesheet" href="{% static 'new.css' %}">
+</head>
+
+<body>
+<br/>
+<h1>Hello, {{ user.username|default:'Guest! How are You?' }}!</h1>
+<div id="wrapper">
+
+    <div id="menu">
+        <ul>
+           {% if user.is_authenticated %}
+                <li> <a href="{% url 'logout_user' %}">Logout</a></li>
+                <li> <a href="{% url 'profile_edit' %}">Edit Profile</a></li>
+             {% else %}
+                <li><a href="{% url 'login_user' %}">Login</a></li>
+                <li><a href="{% url 'register_user' %}">Register</a></li>
+            {% endif %}
+
+                <li><a href="{% url 'home_page_app:main' %}">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="{% url 'create_review' %}">Offer</a></li>
+
+        </ul>
+    </div>
+    <div id="logo">
+        <img src="{% static 'homepage/explore_poland.jpg'%}" style="width: 980px;">
+    </div>
+    <div class="container">
+      <div class="jumbotron">
+<!--         {% include 'authenticate/messaging.html' %}-->
+        {% block content %}
+
+          {% endblock %}
+
+<!--          {% if messages %}-->
+<!--            {% for message in messages %}-->
+<!--            <div class="alert alert-warning alert-dismissible fade show" role="alert">-->
+<!--                 {{ message }}-->
+<!--            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+<!--          {% endif %}-->
+      </div>
+    </div>
+
+</body>
+</html>

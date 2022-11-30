@@ -14,16 +14,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LoginView, LogoutView
 
+from user_app.views import PasswordsChangeView
+from home_page_app.views import test_response
 
 
 
 urlpatterns = [
-    path('', include('home_page_app.urls')),
+    # path('', include('home_page_app.urls')),
     path('admin/', admin.site.urls),
-    path('test/', include('places_app.urls'))
+    path('', test_response),
+    path('explore/', include('home_page_app.urls')),
+    path('user/', include('user_app.urls')),
+    path('user/', include('django.contrib.auth.urls')), #  build in function for user
+    path('review/', include('review_app.urls')),
+    path('password/', PasswordsChangeView.as_view(template_name='authenticate/change_password.html'), name='password_change'),
+    path('test/', include('places_app.urls')),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
