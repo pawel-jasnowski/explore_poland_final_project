@@ -1,0 +1,184 @@
+[
+  {
+    "model": "places_app.places",
+    "pk": 1,
+    "fields": {
+      "place_name": "Apartament Centrum",
+      "city": "Karpacz",
+      "region": "Mountains",
+      "object_type": "Apartment",
+      "price_per_night": "700.00",
+      "facilities": "2,3,4,6",
+      "description": "a cozy apartment with a fireplace located on the ground floor of the house surrounded by greenery.\r\nThe plot is over 1000m2 and fenced.\r\nParking the car free of charge. Super infrastructure - ski lifts, shops, doctors - all nearby - welcome!\r\n\r\nAddress: 70 D�uga, 58-100 �widnica,",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 2,
+    "fields": {
+      "place_name": "Zak�tek G�rski",
+      "city": "Sosn�wka",
+      "region": "Mountains",
+      "object_type": "Cottage",
+      "price_per_night": "400.00",
+      "facilities": "2,3,6,8,9",
+      "description": "Zak�tek G�rski is located in Sosn�wka in the Podg�rzyn commune in the Lower Silesian Voivodeship. The resort is located at the foot of the Karkonosze Mountains, surrounded by the Sosn�wka water reservoir. \r\n\r\nNearby there are ski slopes, as well as cycling and walking routes. The area guarantees great entertainment for fans of winter sports, cycling and for those who want to spend time actively or take a break from the city noise. The appropriate location is also a starting point to Karpacz and the surrounding area. \r\n\r\nThere are also numerous monuments, palaces and castles in the area, which are an additional tourist attraction. The recreation and relaxation base offers three houses that can accommodate 18 people.\r\n\r\nAddress: Stra�acka 4E, 58-564 Sosn�wka",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 3,
+    "fields": {
+      "place_name": "\"Wie�a\" - Unikalny Dom Przyrody",
+      "city": "Przesieka",
+      "region": "Mountains",
+      "object_type": "Cottage",
+      "price_per_night": "112.00",
+      "facilities": "2,3,4,6,9",
+      "description": "1. The first floor is a beautiful entrance to the \"Tower\".\r\n\r\n2. On the second floor there is a living room, a small kitchen equipped with everything you need to prepare delicious meals, Ark of the kitchenette, microwave, coffee maker, electric kettle, electric stove, large bathroom, small fridge, closed heating stove that you can see photos of (KAMIN) logs that heat the entire house, including the bedroom, even on very cold days.\r\n\r\n3. Third floor is a bedroom with a large comfortable double bed (for a couple) or two separate single beds, a laptop desk. There is also a large wardrobe for general storage and hanging clothes, and a balcony overlooking the garden.\r\n\r\nAddress: Przesieka",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 4,
+    "fields": {
+      "place_name": "Hotel Dziki Potok Konferencje & Prestige SPA",
+      "city": "Karpacz",
+      "region": "Mountains",
+      "object_type": "Hotel",
+      "price_per_night": "500.00",
+      "facilities": "1,2,4,5",
+      "description": "Ten modern hotels are located at ul.\r\nThe classically furnished rooms are equipped with TVs and whatever you want to have an extra desk, desk. The bathroom has a shower, hairdryer and toiletries.\r\nThe hotel offers: restaurant, SPA, swimming pool area, jacuzzi, sauna and a sense of steam worth.\r\n\r\naddress: ul. My�liwska 22, 58-540 Karpacz,",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 5,
+    "fields": {
+      "place_name": "Hotel Bambi Boutique",
+      "city": "Zakopane",
+      "region": "Mountains",
+      "object_type": "Hotel",
+      "price_per_night": "375.00",
+      "facilities": "2,3,8",
+      "description": "Residence Bambi Boutique is located in Zakopane. It offers rooms with free Wi-Fi and a flat-screen TV with satellite channels. Free private parking is available on site.\r\nRooms at the Bambi Boutique are spacious. They are decorated in a regional style with light wood decorations. They all have a private bathroom.\r\nEach room at Residence Bambi has an electric kettle and a radio. Most of them also have a balcony with a picturesque view of the Tatra Mountains.\r\nThe Bambi Boutique has an indoor playground for children, a playground and a separate area with barbecue facilities. An airport shuttle service is available at an additional cost.\r\n\r\nAddress: Droga Do Roj�w 9 , 34-500 Zakopane",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 7,
+    "fields": {
+      "place_name": "R�a Wiatr�w",
+      "city": "W�gorzewo",
+      "region": "Lakes",
+      "object_type": "Cottage",
+      "price_per_night": "190.00",
+      "facilities": "2,3,9",
+      "description": "Located in W�gorzewo, R�a Wiatr�w offers instant check-in and check-out, non-smoking rooms, a garden, free WiFi and barbecue facilities. Distance to important places from the property: Native American Village - 18 km. There is a playground on site. Family rooms are also available. Some accommodation options have a balcony overlooking the lake.\r\nEach accommodation option has a wardrobe, a flat-screen TV and a private bathroom. Bed linen and towels are provided. Each accommodation option has a kettle, and some rooms have a kitchenette with a fridge and a stovetop.\r\nA continental breakfast is served each morning at the property.\r\n\r\nAddress: Wodoci�gowa 1, 11-600 W�gorzewo",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 8,
+    "fields": {
+      "place_name": "Glemuria",
+      "city": "Czerniki",
+      "region": "Lakes",
+      "object_type": "Apartment",
+      "price_per_night": "400.00",
+      "facilities": "2,3,4,6,8",
+      "description": "At Glemuria, you get the Genius discount! To save in this property, just log in.\r\n\r\nLocated in K�trzyn in the Warmia-Masuria Region, Glemuria features free WiFi, a barbecue, a garden and free private parking. Important places to visit are: the Marian Sanctuary in �wi�ta Lipka - 20 km.\r\n\r\nEach accommodation option has a fully equipped kitchen, including a microwave, as well as a fireplace, a seating area with a sofa, a flat-screen TV and a private bathroom with a shower and a hairdryer. Also includes a fridge, stovetop, toaster, kettle and coffee machine.\r\n\r\nThe property has a terrace.\r\n\r\nAddress: Czerniki 21C, 11-400 K�trzyn,",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 9,
+    "fields": {
+      "place_name": "Jagodowy Sad",
+      "city": "Radzie",
+      "region": "Lakes",
+      "object_type": "Cottage",
+      "price_per_night": "66.00",
+      "facilities": "2,3,4,6,8",
+      "description": "Featuring free WiFi, air conditioning, a garden and a barbecue, Jagod�w Sad is located in Radzie. Distance to important places of interest: Talki Golf - 7 km, Boyen Fortress - 29 km. The surrounding area is ideal for trekking and cycling. Free private parking is available on site.\r\n\r\nThe apartment has a flat-screen TV. There is a seating area, a dining area and a kitchenette with a microwave, fridge and stovetop.\r\n\r\nThe property has a terrace. Jagod�w Sad offers bicycle rental.\r\n\r\nAddress: Radzie 21A, 11-510 Radzi",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 10,
+    "fields": {
+      "place_name": "Hotel Dom Polonii",
+      "city": "Ostr�da",
+      "region": "Lakes",
+      "object_type": "Hotel",
+      "price_per_night": "171.00",
+      "facilities": "2,3,4,10",
+      "description": "The two-star Hotel Dom Polonii offers rooms and conference facilities. It is located in Ostr�da, just 200 meters from the train station. Free private parking is available on site. The boulevard on Lake Drw�ckie is only 400 meters away.\r\n\r\nHotel Dom Polonii has a newly opened rehabilitation center, which guests can use for an additional fee and upon prior reservation. For stays of more than 5 days, guests receive a 5% discount on the wellness services.\r\n\r\nThe rooms are classically furnished and done in warm colors. The floors are carpeted. Each room has a bathroom with a shower and a TV with cable channels.\r\n\r\nMeals are served in the spacious dining room. WiFi is available free of charge.\r\n\r\nAddress: ul. Pieni�nego 6 , 14-100 Ostr�da,",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 11,
+    "fields": {
+      "place_name": "Samosiejka - overlooking the lake",
+      "city": "Zalesie",
+      "region": "Lakes",
+      "object_type": "Cottage",
+      "price_per_night": "380.00",
+      "facilities": "3,4,6,8",
+      "description": "Samosiejka - with a lake view, offers a garden, a breed and a balcony with a lake view. trip in the town of Lidzbark. Nearby there is: Zalesie. Number of places from the property: Municipal Stadium in Lubawa - 33 km. The surroundings of the cottage are perfect for skiing and cycling. Free private parking is available on site.\r\n\r\nThe 2-bedroom chalet features free WiFi, a screen with dishwasher, washing machine and a kitchen with a fridge and a cooker. Bed linen and towels are provided.\r\n\r\nIn the facility.\r\n\r\nOn-site at the Samosiejka - on site, there is a barbecue area and a sun terrace.\r\n\r\nAddress: Zalesie 29, 13-230 Lidzbark,",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 12,
+    "fields": {
+      "place_name": "Hotel New Skanpol",
+      "city": "Ko�obrzeg",
+      "region": "Sea",
+      "object_type": "Hotel",
+      "price_per_night": "263.00",
+      "facilities": "1,2,3,5",
+      "description": "Located in the center of Ko�obrzeg, Hotel New Skanpol is only 200 m from Ko�obrzeg Railway Station. It offers an aqua center featuring a swimming pool, a Jacuzzi and wet and dry saunas. Free WiFi is available.\r\n\r\nEach room features a TV, a work desk and free internet. All come with a private bathroom.\r\n\r\nGuests can use many of the facilities the Skanpol offers. These include a bar, a caf� and a nightclub. Breakfast buffet is available each morning in the hotel restaurant, Skandynawia, which specializes in international cuisine. It also serves meals suitable for vegetarians and has a menu for children. Sublima restaurant offers international cuisine and features a live cooking station.\r\n\r\nMany places of interest are close to Hotel New Skanpol. The beach is 801 m away, while the Pars�ta River promenade is only 350 m from the hotel. The Port of Ko�obrzeg is 0.6 mi away and the lighthouse is within 0.8 mi.\r\n\r\nThis is our guests' favorite part of Ko�obrzeg, according to independent reviews.\r\n\r\nAddress: Dworcowa 10, �r�dmie�cie, 78-100 Ko�obrzeg,",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 13,
+    "fields": {
+      "place_name": "Nordowi Dw�r",
+      "city": "Celebrowo",
+      "region": "Sea",
+      "object_type": "Hotel",
+      "price_per_night": "157.00",
+      "facilities": "2,3,4,5",
+      "description": "Located in Celbowo, 25.7 km from Gdynia Harbour, Nordowi Dw�r provides accommodations with a restaurant, free private parking, a fitness center and a garden. Featuring family rooms, this property also provides guests with a playground. The property features a sauna, free WiFi and room service.\r\n\r\nAt the hotel, each room comes with a desk, a flat-screen TV, a private bathroom, bed linen and towels. Guest rooms at Nordowi Dw�r include air conditioning and a closet.\r\n\r\nThe accommodation offers a continental or buffet breakfast.\r\n\r\nGuests at Nordowi Dw�r will be able to enjoy activities in and around Celbowo, like cycling.\r\n\r\nShipyard Gdynia is 27.4 km from the hotel, while Gdynia Central Railway Station is 27.4 km away. The nearest airport is Gda�sk Lech Wa��sa Airport, 43.5 km from Nordowi Dw�r.\r\n\r\nAddress: ul. Celbowo 27A, 84-100 Celbowo",
+      "images": "images"
+    }
+  },
+  {
+    "model": "places_app.places",
+    "pk": 14,
+    "fields": {
+      "place_name": "Cisowy Zak�tek",
+      "city": "Sasino",
+      "region": "Sea",
+      "object_type": "Cottage",
+      "price_per_night": "452.00",
+      "facilities": "1,2,3,6,8",
+      "description": "Located in a green area 3.1 mi from the quiet beach on the Baltic Sea, Cisowy Zak�tek offers modern, design bungalows with private saunas.\r\n\r\nEvery bungalow is made of wood, has two floors and features two bathrooms, two terraces, a fireplace and flat-screen TVs with satellite channels. There is also a washing machine and a fully equipped kitchenette with a dishwasher and a coffee machine.\r\n\r\nCisowy Zak�tek also offers barbecue facilities and a playground for children. There is an outdoor swimming pool available.\r\nIt is 4.3 mi to Sarbsko Lake.\r\n\r\nAddress: ul. Stara Cegielnia 18, 84-210 Sasino",
+      "images": "images"
+    }
+  }
+]
