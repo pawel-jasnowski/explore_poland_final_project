@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Lista ofert
+{% endblock %}
+{% block site %}
+
+<form action="/test/reservation/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}
+
+
+
+
+
+

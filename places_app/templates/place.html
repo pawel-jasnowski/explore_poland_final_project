@@ -1,42 +1,49 @@
 {% extends 'base.html' %}
 {% load static %}
-{#{% load bootstrap %}#}
 
-{% block title %} Lista ofert {% endblock %}
-
+{#{% block title %}#}
+{#	Lista ofert#}
+{#{% endblock %}#}
 {% block site %}
-    <a href="{% url 'new_place' %}"> Add place </a>
 
-    {% if places|length == 0 %}
-         <h2> Brak ofert miejsc. </h2>
-    {% else %}
-         <h2>Tu będą oferty: {{ places|length }}</h2>
+{#	<a href="{% url 'new_place' %}"> Add place </a>#}
+	    {% if places|length == 0 %}
+		    <h2> Brak ofert miejsc. </h2>
+	    {% else %}
+		    <h2>number of offers{{ places|length }}</h2>
+        {% endif %}
+        {% if places|length == 0 %}
+            <h2> Brak ofert miejsc. </h2>
+        {% else %}
+		<h2>number of offers for region: {{ places|length }}</h2>
+	{% for place in places %}
+<div class="card">
+	<div class="card-body">
+		<img src="{{ MEDIA_URL }}{{ place.images }}" class="places-img">
+			<div class="row">
+				<div class="col-9">
+				<p class="card-title">{{ place.place_name }}</p>
+					<div class="facilities">Facilities:</div>
+					<div>
+						<ul>
+						<li>{{ place.facilities }}</li>
+						</ul>
+					</div>
+				<div class="region">{{ place.region }}: {{ place.city }} <br></div>
+				</div>
+				<div class="col-3">
+					<a href="{% url 'edit_place' place.id %}"><i class="fas fa-2x fa-edit"></i> Edit </a>
+					<a href="{% url 'delete_place' place.id %}"><i class="fas fa-2x fa-trash-alt"></i>Delete</a>
+					<p class="price">Price {{ place.price_per_night }} PLN/per night<p>
+				</div>
+			</div>
+		<div class="row">
+		<p class="card-text">{{ place.description }}</p>
+		</div>
+		<a href="{% url 'get_detail' place.id %}"><buttom class="button">RESERVE!</buttom></a>
+	</div>
+</div>
+    {% endfor %}
+        {% endif %}
 
-        {% for place in places %}
-            <div class="card" style="width: 26rem;">
-              <div class="card-body">
-                  <img src="{{ MEDIA_URL }}{{ place.images }}" class="places-img">
-                  <div class="row">
-                      <div class="col-9">
-                          <h5 class="card-title">{{ place.place_name }}</h5>
-                          <h5 class="card-title">{{ place.facilities}}</h5>
-                      </div>
-                       <div class="col-3">
-                           <a href="{% url 'edit_place' place.id %}"><i class="fas fa-2x fa-edit"></i> Edit </a>
-                           <a href="{% url 'delete_place' place.id %}"><i class="fas fa-2x fa-trash-alt"></i>Delete</a>
-                       </div>
-
-                      </div>
-                  <div class="row">
-                      <p class="card-text">{{ place.description }}</p>
-                  </div>
-
-
-              </div>
-            </div>
-       <h3> </h3>
-        <p></p>
-
-        {% endfor %}
-    {% endif %}
 {% endblock %}

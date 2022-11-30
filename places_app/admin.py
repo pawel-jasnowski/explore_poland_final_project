@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Places, PlacesImage
+from .models import Places, PlacesImage, Booking
 
 class PlacesImageAdmin(admin.StackedInline):
     model = PlacesImage
@@ -19,3 +19,6 @@ class PlacesImageAdmin(admin.ModelAdmin):
     pass
 
 # Register your models here.
+@admin.register(Booking)
+class BookingAdmin(admin.ModelAdmin):
+    pass

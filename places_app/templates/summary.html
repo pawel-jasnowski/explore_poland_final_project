@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+	Lista ofert
+{% endblock %}
+{% block site %}
+<form>
+<h1> YOU RESERVATION  {{ booking.user }} </h1>
+    {% csrf_token %}
+<div class="card">
+	<div class="card-body">
+		<img src="{{ place.images.url }}" class="places-img">
+			<div class="row">
+				<div class="col-9">
+				<p class="card-title">{{ booking.place.place_name }}</p>
+    <div>
+				</div>
+                    <p class="price"> Total days: {{ booking.get_total_days}} <p>
+					<p class="price">Price {{ booking.calculate_price }} PLN total<p>
+				</div>
+			</div>
+        <a href=""><buttom class="button">RESERVE NOW</buttom></a>
+	</div>
+</div>
+    </form>
+</div>
+
+{% endblock %}
