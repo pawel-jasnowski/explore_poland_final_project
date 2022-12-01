@@ -37,18 +37,21 @@
             <div class="jumbotron">
 
                 {% block content %}
+
         {% for review in reviews %}
 
                 <table>
                  <tr>
 
                     <td>RATING: {{ review.rating }} </td>
-                    <td>YOUR OPINION: {{ review.review_body }}</td>
+                    <td>OPINION ABOUT THAT PLACE: {{ review.review_body }}</td>
                      <td>AUTHOR: {{review.author.first_name }} - {{ review.author.last_name }} </td>
                  </tr>
                 </table>
 
+
         {% endfor %}
+
 
                 {% endblock %}
             </div>

@@ -7,6 +7,7 @@ from django.views.generic import View
 
 from .forms import CreateReview
 from review_app.models import Review
+from places_app.models import Places
 
 # Create your views here.
 
@@ -27,9 +28,10 @@ from review_app.models import Review
 #         return redirect('login_user')
 
 
-def create_new_review(request):
+def create_new_review(request, id):
     if request.user.is_authenticated:
         our_user = request.user
+        our_place = request(Places, pk=id)
          # Do something for logged-in users.
         if request.method == 'POST':
             form = CreateReview(request.POST)
@@ -37,6 +39,7 @@ def create_new_review(request):
 
                 instance = form.save(commit = False)
                 instance.author = our_user
+                instance.place_name = our_place.place_name
                 instance.save()
                 form.save()
                 return redirect('home_page_app:main')

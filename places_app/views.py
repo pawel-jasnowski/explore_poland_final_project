@@ -41,7 +41,6 @@ def delete_place(request, id):
     return render(request, 'confirm_deletion.html', {'place': place})
 
 
-
 def get_detail(request, id):
     place = get_object_or_404(Places, pk=id)
     images=PlacesImage.objects.filter(places=place.id)
