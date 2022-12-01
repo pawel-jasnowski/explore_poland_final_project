@@ -10,44 +10,43 @@ from review_app.models import Review
 
 # Create your views here.
 
-def create_new_review(request):
-    if request.user.is_authenticated:
-         # Do something for logged-in users.
-        if request.method == 'POST':
-            form = CreateReview(request.POST)
-            if form.is_valid():
-                form.save()
-                return redirect('home_page_app:main')
-        else:
-             form = CreateReview()
-             return render(request, 'create_review_test.html', {'form': form})
-    else:
-        # Do something for anonymous users.
-        messages.success(request, f'You must be logged it to add some review!')
-        return redirect('login_user')
-
-
 # def create_new_review(request):
 #     if request.user.is_authenticated:
 #          # Do something for logged-in users.
 #         if request.method == 'POST':
-#             user_name = request.user.get_username()
-#             # data = {'author' : user_name}
 #             form = CreateReview(request.POST)
 #             if form.is_valid():
-#
-#                 instance = form.save(commit = False)
-#                 instance.author = request.user.username
-#                 instance.save()
 #                 form.save()
 #                 return redirect('home_page_app:main')
 #         else:
-#             form = CreateReview()
-#         return render(request, 'create_review_test.html', {'form': form})
+#              form = CreateReview()
+#              return render(request, 'create_review_test.html', {'form': form})
 #     else:
 #         # Do something for anonymous users.
 #         messages.success(request, f'You must be logged it to add some review!')
 #         return redirect('login_user')
+
+
+def create_new_review(request):
+    if request.user.is_authenticated:
+        our_user = request.user
+         # Do something for logged-in users.
+        if request.method == 'POST':
+            form = CreateReview(request.POST)
+            if form.is_valid():
+
+                instance = form.save(commit = False)
+                instance.author = our_user
+                instance.save()
+                form.save()
+                return redirect('home_page_app:main')
+        else:
+            form = CreateReview()
+        return render(request, 'create_review_test.html', {'form': form})
+    else:
+        # Do something for anonymous users.
+        messages.success(request, f'You must be logged it to add some review!')
+        return redirect('login_user')
 
 # class ReviewView(View):
 #     def get(self, request):

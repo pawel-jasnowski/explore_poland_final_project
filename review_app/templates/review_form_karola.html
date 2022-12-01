@@ -43,8 +43,8 @@
                  <tr>
 
                     <td>RATING: {{ review.rating }} </td>
-                    <td>YOUR OPINION {{ review.review_body }}</td>
-                     <td>AUTHOR {{ review.author }} </td>
+                    <td>YOUR OPINION: {{ review.review_body }}</td>
+                     <td>AUTHOR: {{review.author.first_name }} - {{ review.author.last_name }} </td>
                  </tr>
                 </table>
 
