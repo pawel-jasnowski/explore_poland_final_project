@@ -9,8 +9,8 @@ urlpatterns = [
     path('edit/<int:id>/', edit_place, name='edit_place'),
     path('delete/<int:id>/', delete_place, name='delete_place'),
     path('detail/<int:id>', get_detail, name='get_detail'),
-    path('mountain/', MountainView.as_view()),
-    path('lakes/', LakesView.as_view()),
-    path('sea/', SeaView.as_view()),
+    path('mountain/', MountainView.as_view(), name='mountain'),
+    path('lakes/', LakesView.as_view(), name='lakes'),
+    path('sea/', SeaView.as_view(), name='sea'),
 
 ]

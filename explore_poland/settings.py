@@ -133,7 +133,6 @@ CRISPY_TEMPLATE_PACK ='bootstrap4'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'explore_media'
 
-MEDIA_ROOT = 'places_app/media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

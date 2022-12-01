@@ -1,5 +1,5 @@
 body {
-    padding: 5rem;
+    padding: 3rem;
     color: #006b1b;
 
 
@@ -10,28 +10,34 @@ body {
 
 }
 .places-img {
-    width: 150px;
+    width: 250px;
+    height: 150px;
     float: left;
 }
 
 .card{
     border: solid;
+    background-color: beige;
 
 }
 .card-title{
     font-size: 20px;
     font-weight: bold;
+    padding-right: 10px;
+
+
 }
 
 .facilities{
     font-size: 15px;
-    text-decoration: underline;
+    font-weight: bold;
 }
 
 .region{
     font-size: 20px;
     text-decoration: underline;
     text-decoration: solid;
+    font-weight: bold;
 }
 
 .button {
@@ -51,6 +57,7 @@ body {
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
+
 }
 
 .columns {
@@ -64,6 +71,8 @@ body {
     font-weight: bold;
     text-decoration: underline;
     text-decoration-line: underline;
+    object-position: left;
+    position: page;
 
 }
 
@@ -74,4 +83,62 @@ body {
 
 .text {
     font-size: 10px;
+}
+
+.submit {
+    border: solid;
+    border-color: #006b1b;
+    color: white;
+    background-color: #8ca05e;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.filter {
+    border: solid;
+    border-color: #006b1b;
+    font-size: 20px;
+    background-color: beige
+
+}
+
+.place_name {
+    font-size: 36px;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+#review {
+    border: solid;
+    border-color: darkgreen;
+    color: white;
+    background-color: #8ca05e;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: underline;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#menu {
+	height: 10px;
+	float: right;
+	margin-top:15px;
 }

@@ -4,46 +4,42 @@
 {% block title %}
 	Lista ofert
 {% endblock %}
+
 {% block site %}
 
-	<a href="{% url 'new_place' %}"> Add place </a>
-	    {% if object_list|length == 0 %}
-		    <h2> Brak ofert miejsc. </h2>
-	    {% else %}
-		    <h2>number of offers{{ object_list|length }}</h2>
-        {% endif %}
-        {% if object_list|length == 0 %}
-            <h2> Brak ofert miejsc. </h2>
-        {% else %}
-		<h2>number of offers for region: {{ object_list|length }}</h2>
+		<h2>number of offers for region: - {{ object_list|length }}</h2>
 	{% for place in object_list %}
+
 <div class="card">
 	<div class="card-body">
 		<img src="{{ place.images.url }}" class="places-img">
 			<div class="row">
 				<div class="col-9">
-				<p class="card-title">{{ place.place_name }}</p>
+				<p class="card-title"></bold>{{ place.place_name }}</p>
+                    <a href="{% url 'get_detail' place.id %}"><buttom class="button">RESERVE!</buttom></a>
 					<div class="facilities">Facilities:</div>
 					<div>
 						<ul>
 						<li>{{ place.facilities }}</li>
 						</ul>
 					</div>
-				<div class="region">{{ place.region }}: {{ place.city }} <br></div>
+
 				</div>
 				<div class="col-3">
-					<a href="{% url 'edit_place' place.id %}"><i class="fas fa-2x fa-edit"></i> Edit </a>
-					<a href="{% url 'delete_place' place.id %}"><i class="fas fa-2x fa-trash-alt"></i>Delete</a>
 					<p class="price">Price {{ place.price_per_night }} PLN/per night<p>
 				</div>
 			</div>
-		<div class="row">
+
+        <div class="region">&#128204; {{ place.region }}: {{ place.city }} <br></div>
+        <div class="row">
 		<p class="card-text">{{ place.description }}</p>
 		</div>
-		<a href="{% url 'get_detail' place.id %}"><buttom class="button">RESERVE!</buttom></a>
+
+        <a href="{% url 'view_review' %}"><buttom class="button">REVIEW</buttom></a>
 	</div>
 </div>
     {% endfor %}
-        {% endif %}
+
 
 {% endblock %}
+

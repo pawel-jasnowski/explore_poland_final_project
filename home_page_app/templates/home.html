@@ -1,24 +1,34 @@
 {% load static%}
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Szablon</title>
+    <title>Explore Poland ! Let`s GO ! </title>
 
     <link rel="stylesheet" href="{% static 'new.css' %}">
 </head>
 
 <body>
-
+<br/>
+<h1>Hello, {{ user.username|default:'Guest! How are You?' }}!</h1>
 <div id="wrapper">
 
     <div id="menu">
+
         <ul>
-            <li><a href="/review">Review</a></li>
-            <li><a href="/">Home</a></li>
-            <li><a href="#title">About</a></li>
-            <li><a href="test/place_filter/">Offer</a></li>
-            <li><a href="#">Login</a></li>
+<!--           <li>Hello, {{ user.username|default:'Guest USER' }}!</li>-->
+           {% if user.is_authenticated %}
+                <li> <a href="{% url 'logout_user' %}">Logout</a></li>
+                <li> <a href="{% url 'profile_edit' %}">Edit Profile</a></li>
+             {% else %}
+                <li><a href="{% url 'login_user' %}">Login</a></li>
+                <li><a href="{% url 'register_user' %}">Register</a></li>
+            {% endif %}
+
+                <li><a href="{% url 'home_page_app:main' %}">Home</a></li>
+                <li><a href="#title">About</a></li>
+
         </ul>
     </div>
     <div id="logo">
@@ -28,6 +38,7 @@
       <div class="jumbotron">
         {% block content %}{% endblock %}
       </div>
-
+    </div>
+</div>
 </body>
 </html>
