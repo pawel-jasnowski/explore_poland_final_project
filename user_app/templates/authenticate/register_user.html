@@ -4,16 +4,10 @@
 {% include 'authenticate/messaging.html' %}
 {% block content %}
 
-<!--{% if messages %}-->
-<!--<ul class="messages">-->
-<!--    {% for message in messages %}-->
-<!--    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>-->
-<!--    {% endfor %}-->
-<!--</ul>-->
-<!--{% endif %}-->
-
 <div class="shadow p-4 mb-5 bg-body rounded">
-<h1>Register new user</h1>
+<h1> <p>Put your details below </p>
+    <p>Remember to check Your
+    email afterward to confirm Your registration</p></h1>
 <br/><br/>
  <form action="{% url 'register_user' %} " method=POST>
    {% csrf_token %}

@@ -1,9 +1,11 @@
 import django_filters
 from django_filters import ChoiceFilter
-from multiselectfield import MultiSelectField
 from django import forms
-from .models import Places
+from multiselectfield import MultiSelectField
 from distutils.util import strtobool
+
+from .models import Places
+
 
 FACILITIES_CHOICES = ((1, 'Swimming pool'), (2, 'Free parking outside'), (3, 'Wi-Fi'), (4, 'Pet friendly'), (5, 'SPA'),
                       (6, 'Private kitchen'), (7, 'Bike rating'), (8, 'BBQ Place'), (9, 'coffee maker'), (10, 'family room'))

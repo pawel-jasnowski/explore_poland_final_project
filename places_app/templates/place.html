@@ -34,9 +34,15 @@
         <div class="row">
 		<p class="card-text">{{ place.description }}</p>
 		</div>
+		<p></p>
+		<a href="{% url 'view_review' %}"><buttom class="button">VIEW ALL REVIEWS FOR THIS PLACE</buttom></a>
+		{% if user.is_authenticated %}
+		<a href="{% url 'create_review' %}"><buttom class="button">ADD NEW REVIEW FOR THIS PLACE </buttom></a>
+		{% endif %}
+		<a href="{% url 'home_page_app:main' %}"><buttom class="button">GO TO MAIN PAGE</buttom></a>
 
-        <a href="{% url 'view_review' %}"><buttom class="button">REVIEW</buttom></a>
-	</div>
+		<p></p>
+		</div>
 </div>
     {% endfor %}
 

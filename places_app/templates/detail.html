@@ -53,7 +53,11 @@
 				</div>
 			</div>
 		<p class="text">This is a summary of your booking, if everything is correct, press the confirm button. Remember that you can pay for accommodation on the spot.</p>
-    </div>
+    	<a href="{% url 'view_review' %}"><buttom class="button">VIEW ALL REVIEWS FOR THIS PLACE</buttom></a>
+		{% if user.is_authenticated %}
+		<a href="{% url 'create_review' %}"><buttom class="button">ADD NEW REVIEW FOR THIS PLACE </buttom></a>
+		{% endif %}
+	</div>
 </div>
 
 {% endblock %}
