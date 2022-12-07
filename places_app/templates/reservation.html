@@ -1,22 +1,76 @@
 
-{% extends 'base.html' %}
-{% load static %}
+{% extends "base.html" %}
 
-{% block title %}
-	Lista ofert
+{% block start %}
+
+<div class="container mt-5 pt-5">
+    <div class="row search-card-result">
+
+    <div class="col-md-3">
+        <div class="col-md-3">
+                        <a href='/test/reservation/{{ all_place.id }}'>
+                             <img class="img-fluid" src="/media/{{images.first.images}}" alt="Card image cap">
+                        </a>  </div>
+        <div class="col-md-5">
+            <h5>{{all_place.place_name}}</h5>
+
+            <p>
+                {{all_place.description|truncatechars:150}}
+            </p>
+            <p>
+                {%for facility in all_place.facilities.all %}
+                    <b>{{facility.facilities}}</b>,
+                {% endfor %}
+            </p>
+
+        </div>
+        <div class="col-md-2 border-left text-center more-offers">
+
+            <p>Place.com</p>
+            <p>${{all_place.price_per_night}}</p>
+            <p>Room count</p>
+            <p>{{all_place.object_type}}</p>
+        </div>
+        <div class="col-md-2 border-left text-center more-offers">
+
+            <div class="btn btn-success">View deal </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for image in images %}
+            <div class="col-md-3">
+                <img src="{{ image.images.url }}" style="height: 150px ; width:150px">
+            </div>
+            {% endfor %}
+    </div>
+    {% if request.user.is_authenticated%}
+        <div class="filter-card">
+                <h5>Book Hotel</h5>
+                {%include "messages.html"%}
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label for="start_date">Check in</label>
+                            <input type="date" name="start_date" id="start_date" class="form-control required">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="end_date">Check out</label>
+                            <input type="date" name="end_date" id="end_date" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-primary btn-block" value="Book">
+                        </div>
+                    </div>
+                </form>
+            </div>
+    {% else %}
+
+    <a href="/login/" class="btn btn-primary mt-5 ">Login</a>
+    {% endif %}
+</div>
+
 {% endblock %}
-{% block site %}
-
-<form action="/test/reservation/" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
-
-{% endblock %}
-
-
-
-
-
-

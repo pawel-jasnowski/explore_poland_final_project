@@ -1,8 +1,9 @@
-from django.db.models import Model, CharField, TextField, DecimalField, FileField, ForeignKey, DateField, IntegerField, ManyToManyField, CASCADE
-from multiselectfield import MultiSelectField
-from django.contrib.auth.models import User
 from decimal import Decimal
+
+from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
+from django.db.models import Model, CharField, TextField, DecimalField, FileField, ForeignKey, DateField, CASCADE, ImageField
+from multiselectfield import MultiSelectField
 
 REGION = {
     ("Sea", "Sea"),
@@ -17,8 +18,8 @@ OBJECT = {
 }
 
 FACILITIES_CHOICES = ((1, 'Swimming pool'), (2, 'Free parking outside'), (3, 'Wi-Fi'), (4, 'Pet friendly'), (5, 'SPA'),
-                      (6, 'Private kitchen'), (7, 'Bike rating'), (8, 'BBQ Place'), (9, 'coffee maker'), (10, 'family room'))
-
+                      (6, 'Private kitchen'), (7, 'Bike rating'), (8, 'BBQ Place'), (9, 'coffee maker'),
+                      (10, 'family room'))
 
 class Places(Model):
     place_name = CharField(max_length=120, blank=False, unique=True)
@@ -26,20 +27,19 @@ class Places(Model):
     region = CharField(max_length=20, choices=REGION, null=False, blank=False)
     object_type = CharField(max_length=20, choices=OBJECT)
     price_per_night = DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(Decimal('50.00'))])
-    facilities = MultiSelectField(choices=FACILITIES_CHOICES,  max_choices=10,  max_length=100, blank=False, null=False, default='')
+    facilities = MultiSelectField(choices=FACILITIES_CHOICES, max_choices=10, max_length=100, blank=False, null=False,
+                                  default='')
     description = TextField(null=False)
     image = FileField(null=False, blank=False, default="")
-
-
 
     def __str__(self):
         return f"{self.place_name} ({self.region},{self.city})"
 
 
-
 class PlacesImage(Model):
     places = ForeignKey(Places, default=None, on_delete=CASCADE)
     images = FileField(upload_to="places_img")
+
 
 class Booking(Model):
     user = ForeignKey(User, related_name="user_bookings", on_delete=CASCADE)
@@ -47,7 +47,6 @@ class Booking(Model):
     end_date = DateField()
     total_price = DecimalField(max_digits=10, decimal_places=2)
     place = ForeignKey(Places, related_name='bookings', on_delete=CASCADE)
-
 
     def __str__(self):
         return f"Duration {self.end_date - self.start_date}"
@@ -57,12 +56,3 @@ class Booking(Model):
 
     def get_total_days(self):
         return (self.end_date - self.start_date).days
-
-
-
-
-
-
-
-
-
