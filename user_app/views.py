@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, UserChangeForm
 from django.contrib.auth.views import PasswordChangeView
-
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -13,7 +11,6 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage
-from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 
 from .forms import RegisterUserForm, PasswordChangingForm, EditProfileForm
@@ -30,7 +27,7 @@ def login_user(request):
             login(request, user)
             messages.success(request, f'Login success !')
                 # Redirect to a success page.
-            return redirect('main')
+            return redirect('home_page_app:main')
         else:
                 # Return an 'invalid login' error message.
             messages.success(request, f'There was a login error. Try again')
@@ -41,7 +38,7 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     # messages.success(request, ('You were log-out. Remember to leave some review ! See You Later - YOUR NAME HERE' ))
-    return redirect('main')
+    return redirect('home_page_app:main')
 
 ##################### email activation #####################
 
@@ -63,7 +60,7 @@ def activate(request, uidb64, token):
     else:
         messages.error(request, "Activation link is invalid!")
 
-    return redirect('main')
+    return redirect('home_page_app:main')
 
 
 def activateEmail(request, user, to_email):
@@ -80,7 +77,7 @@ def activateEmail(request, user, to_email):
     if email.send():
         messages.success(request, f'Dear  " {user.username} " go to Your email: {to_email}, and please confirm your registration')
     else:
-        messages.error(request,f'There was some problem sending email')
+        messages.error(request, f'There was some problem sending email')
 #################################
 def register_user(request):
     if request.method == 'POST':
@@ -101,17 +98,17 @@ def register_user(request):
             return redirect('login_user')
     else:
         form = RegisterUserForm()
-    return render(request, 'authenticate/register_user.html', {'form':form,})
+    return render(request, 'authenticate/register_user.html', {'form': form,})
 
 class PasswordsChangeView(PasswordChangeView):
     # form_class = PasswordChangeForm
     form_class = PasswordChangingForm
-    success_url = reverse_lazy('main')
+    success_url = reverse_lazy('home_page_app:main')
 
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm
     template_name = 'authenticate/edit_profile.html'
-    success_url = reverse_lazy('main')
+    success_url = reverse_lazy('home_page_app:main')
 
     def get_object(self):
         return self.request.user

@@ -32,9 +32,7 @@ from home_page_app.views import test_response
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', include('places_app.urls')),
-    path('explore/', include('home_page_app.urls'))
-    path('', test_response),
-    path('explore/', include('home_page_app.urls')),
+    path('', include('home_page_app.urls')),
     path('user/', include('user_app.urls')),
     path('user/', include('django.contrib.auth.urls')), #  build in function for user
     path('review/', include('review_app.urls')),

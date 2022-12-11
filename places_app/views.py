@@ -6,7 +6,32 @@ from django.db.models import Q
 import datetime
 from django.http import HttpResponseRedirect
 from django.core.exceptions import ValidationError
+from django.views.generic import ListView
 from datetime import datetime
+
+
+class MountainView(ListView):
+    model = Places
+    template_name = "place.html"
+    content_object_name = 'place'
+
+    def get_queryset(self):
+        return Places.objects.filter(region__exact='Mountains').all()
+
+
+class LakesView(ListView):
+    template_name = "place.html"
+
+    def get_queryset(self):
+        return Places.objects.filter(region__exact='Lakes').all()
+
+
+class SeaView(ListView):
+    template_name = "place.html"
+
+    def get_queryset(self):
+        return Places.objects.filter(region__exact='Sea').all()
+
 
 def check_booking(start_date, end_date, id):
     qs = Booking.objects.filter(
@@ -19,6 +44,7 @@ def check_booking(start_date, end_date, id):
         return False
 
     return True
+
 
 def all_places(request):
     all_offers = Places.objects.all()
@@ -60,11 +86,41 @@ def all_places(request):
 
 def place_reservation(request, id):
     if request.method == 'POST':
-        start_date = request.POST.get('start_date')
-        end_date = request.POST.get('end_date')
         place = Places.objects.get(id=id)
 
-        if start_date is '' or end_date is '':
+        if 'action' in request.session.keys() and request.session['action'] == 'confirm':
+
+            confirmed = request.POST.get('confirmed')
+
+            if confirmed == 'cancel':
+                del request.session['action']
+                del request.session['start_date']
+                del request.session['end_date']
+                del request.session['total_price']
+
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+            Booking.objects.create(
+                place=place,
+                user=request.user,
+                start_date=request.session['start_date'],
+                end_date=request.session['end_date'],
+                total_price=request.session['total_price']
+            )
+
+            messages.success(request, 'Your booking has been saved')
+
+            del request.session['action']
+            del request.session['start_date']
+            del request.session['end_date']
+            del request.session['total_price']
+
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+        start_date = request.POST.get('start_date')
+        end_date = request.POST.get('end_date')
+
+        if start_date == '' or end_date == '':
             messages.warning(request, 'Dates cant be empty')
 
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -90,15 +146,10 @@ def place_reservation(request, id):
 
         total_price = place.price_per_night * (datetime_end_date.day - datetime_start_date.day)
 
-        Booking.objects.create(
-            place=place,
-            user=request.user,
-            start_date=start_date,
-            end_date=end_date,
-            total_price=total_price
-        )
-
-        messages.success(request, 'Your booking has been saved')
+        request.session['action'] = 'confirm'
+        request.session['start_date'] = start_date
+        request.session['end_date'] = end_date
+        request.session['total_price'] = str(total_price)
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
@@ -109,6 +160,28 @@ def place_reservation(request, id):
         'all_place': all_place,
         'images': images,
     })
+
+def get_summary(request, id):
+    start_date = request.POST.get('start_date')
+    end_date = request.POST.get('end_date')
+    place = Places.objects.get(id=id)
+
+    datetime_start_date = datetime.strptime(start_date, '%Y-%M-%d')
+    datetime_end_date = datetime.strptime(end_date, '%Y-%M-%d')
+
+    total_price = place.price_per_night * (datetime_end_date.day - datetime_start_date.day)
+
+    Booking.objects.create(
+        place=place,
+        user=request.user,
+        start_date=start_date,
+        end_date=end_date,
+        total_price=total_price
+    )
+
+    context = {'start_date': start_date, 'end_date': end_date, 'place': place, 'total_price': total_price}
+
+    return render(request, "summary.html", context)
 
 
 def new_place(request):
@@ -139,7 +212,6 @@ def delete_place(request, id):
         return redirect(all_places)
 
     return render(request, 'confirm_deletion.html', {'place': place})
-
 
 # def get_detail(request, id):
 #     place = get_object_or_404(Places, pk=id)
@@ -197,17 +269,12 @@ def delete_place(request, id):
 
 
 # def get_summary(request):
-#     booking = get_object_or_404(Booking, pk=id)
+#     booking = BookingForm(request.POST or None)
+#
+#     if booking.is_valid():
+#         booking.save()
 #
 #     return render(request, "summary.html", {'booking': booking})
-
-def get_summary(request):
-    booking = BookingForm(request.POST or None)
-
-    if booking.is_valid():
-        booking.save()
-
-    return render(request, "summary.html", {'booking': booking})
 
 # class BookingView(FormView):
 #     form_class = BookingForm

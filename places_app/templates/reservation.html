@@ -44,9 +44,21 @@
             {% endfor %}
     </div>
     {% if request.user.is_authenticated%}
+        {% if request.session.action and request.session.action == 'confirm' %}
+
+            Czy chcesz zarezerwowac wyjazd od {{ request.session.start_date }} do {{ request.session.end_date }} za calkowity koszt {{ request.session.total_price }} mordo ??
+
+            <form method="post">
+                {% csrf_token %}
+                <input type="submit" value="cancel" name="confirmed">
+                <input type="submit" value="agree" name="confirmed">
+            </form>
+
+        {% else %}
+
         <div class="filter-card">
                 <h5>Book Hotel</h5>
-                {%include "messages.html"%}
+                {% include "messages.html" %}
                 <form method="post">
                     {% csrf_token %}
                     <div class="row form-group">
@@ -67,9 +79,10 @@
                     </div>
                 </form>
             </div>
-    {% else %}
 
-    <a href="/login/" class="btn btn-primary mt-5 ">Login</a>
+        {% endif %}
+    {% else %}
+        <a href="/login/" class="btn btn-primary mt-5 ">Login</a>
     {% endif %}
 </div>
 

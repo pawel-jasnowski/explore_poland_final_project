@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-	Lista ofert
+
 {% endblock %}
 {% block site %}
 <form>
@@ -11,10 +11,10 @@
     {% csrf_token %}
 <div class="card">
 	<div class="card-body">
-		<img src="{{ place.images.url }}" class="places-img">
+		<img src="{{ start_date.id}}" class="places-img">
 			<div class="row">
 				<div class="col-9">
-				<p class="card-title">{{ booking.place.place_name }}</p>
+				<p class="card-title">{{ place.id}}</p>
     <div>
 				</div>
                     <p class="price"> Total days: {{ booking.get_total_days}} <p>
