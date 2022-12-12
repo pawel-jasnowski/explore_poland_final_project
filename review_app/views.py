@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -28,28 +28,27 @@ from places_app.models import Places
 
 
 def create_new_review(request, place_id):
-    url = request.META.get('HTTP_REFERER')
+    # url = request.META.get('HTTP_REFERER')
     if request.user.is_authenticated:
         our_user = request.user
-        our_place = request(Places, pk=place_id)
+        our_place = get_object_or_404(Places, pk=place_id) # instance object PLACE
          # Do something for logged-in users.
         if request.method == 'POST':
             form = CreateReview(request.POST)
             if form.is_valid():
+                instance = form.save(commit=False)
                 data = Review()
                 data.rating = form.cleaned_data['rating']
-                data.review_body = form.cleaned_data['review']
+                data.review_body = form.cleaned_data['review_body']
                 data.author = our_user
                 data.place_name = our_place
                 data.save()
 
-
-                instance = form.save(commit = False)
-                instance.author = our_user
-                instance.place_name = our_place.place_name
-                instance.save()
-                form.save()
-                return redirect(url)
+                # instance.author = our_user
+                # instance = our_place.place_name
+                # instance.save()
+                # form.save()
+                return redirect('home_page_app:main')
         else:
             form = CreateReview()
         return render(request, 'create_review_test.html', {'form': form})

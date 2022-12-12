@@ -29,41 +29,7 @@
 		<p class="text">This is a summary of your booking, if everything is correct, press the confirm button. Remember that you can pay for accommodation on the spot.</p>
     	<a href="{% url 'review_app:view_review' %}"><buttom class="button">VIEW ALL REVIEWS FOR THIS PLACE</buttom></a>
 		<a href="{% url 'home_page_app:main' %}"><buttom class="button">GO TO MAIN PAGE</buttom></a>
-        {% if user.is_authenticated %}
-		<form action=" {% url 'review_app:create_review' place.id %}" method="POST">
-        {%  csrf_token %}
-        <h5> Write Your Review:</h5>
-        <div>
-            <label>How do You rate this place?</label>
-            <br>
-           <div class="form-group">
-            <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-heart"></i></span>
-                <select class="form-control" id="rating">
-                    <option value="1star">1</option>
-                    <option value="2stars">2</option>
-                    <option value="3stars">3</option>
-                    <option value="4stars">4</option>
-                    <option value="5stars">5</option>
-                     <option value="6stars">6</option>
-                     <option value="7stars">7</option>
-                     <option value="8stars">8</option>
-                    <option value="9stars">9</option>
-                </select>
-             </div>
-            </div>
-        </div>
-            Review:
-            <textarea name="review" rows="4"class="form-control"required></textarea>
-           <br>
-            <input type="sumbit" value="Submit Review" class="btn btn-primary">
-            <br>
-        </div >
-        </form>
-            <br>
 
-		{% endif %}
 	</div>
 </div>
 
