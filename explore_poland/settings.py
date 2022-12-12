@@ -146,9 +146,9 @@ LOGOUT_REDIRECT_URL = '/explore/home_page'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_FROM = 'pawel.jasnowski@gmail.com'
 EMAIL_HOST_USER = 'pawel.jasnowski@gmail.com'
-EMAIL_HOST_PASSWORD = ''    # ask ADMIN password
+EMAIL_HOST_PASSWORD = 'ejqltwuwxxnlbeiv'    # ask ADMIN password
 DEFAULT_FROM_EMAIL = 'pawel.jasnowski@gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-PASSWORD_RESET_TIMEOUT = 14400 # token will be valid for 4hours in this case
+PASSWORD_RESET_TIMEOUT = 14400  # token will be valid for 4hours in this case

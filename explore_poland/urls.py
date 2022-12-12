@@ -24,7 +24,7 @@ from user_app.views import PasswordsChangeView
 from home_page_app.views import test_response
 
 
-
+app_name ='explore_poland'
 urlpatterns = [
     # path('', include('home_page_app.urls')),
     path('admin/', admin.site.urls),

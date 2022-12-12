@@ -10,5 +10,5 @@ class Review(Model):
     rating = IntegerField()
     review_body = TextField(max_length=500)
     author = ForeignKey(User, on_delete=CASCADE) # CASCADE will delete all the post from deleted user
-    # place_name = ForeignKey(Places, on_delete=CASCADE, default ='')
+    place_name = ForeignKey(Places, on_delete=CASCADE, default ='')
 

@@ -2,6 +2,8 @@ from django.urls import path, include, reverse_lazy
 from .import views
 from .views import PasswordsChangeView, UserEditView
 
+
+# app_name ='user_app'
 urlpatterns = [
     path('login_user', views.login_user, name='login_user'),
     path('logout_user', views.logout_user, name='logout_user'),

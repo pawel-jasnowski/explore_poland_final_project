@@ -7,7 +7,7 @@
 
 {% block site %}
 
-		<h2>number of offers for region: - {{ object_list|length }}</h2>
+		<h2>number of offers for region " {{ place.region }} " {{ object_list|length }}</h2>
 	{% for place in object_list %}
 
 <div class="card">
@@ -35,10 +35,7 @@
 		<p class="card-text">{{ place.description }}</p>
 		</div>
 		<p></p>
-		<a href="{% url 'view_review' %}"><buttom class="button">VIEW ALL REVIEWS FOR THIS PLACE</buttom></a>
-		{% if user.is_authenticated %}
-		<a href="{% url 'create_review' %}"><buttom class="button">ADD NEW REVIEW FOR THIS PLACE </buttom></a>
-		{% endif %}
+		<a href="{% url 'review_app:view_review' %}"><buttom class="button">VIEW ALL REVIEWS FOR THIS PLACE</buttom></a>
 		<a href="{% url 'home_page_app:main' %}"><buttom class="button">GO TO MAIN PAGE</buttom></a>
 
 		<p></p>
