@@ -36,7 +36,7 @@
 		<p class="card-text">{{ place.description }}</p>
 		</div>
 		<p></p>
-		<a href="{% url 'review_app:view_review' %}"><buttom class="button">VIEW ALL REVIEWS FOR THIS PLACE</buttom></a>
+		<a href="{% url 'review_app:view_review' place.id %}"><buttom class="button">VIEW ALL REVIEWS FOR THIS PLACE</buttom></a>
 		<a href="{% url 'review_app:create_review' place.id %}"><buttom class="button">ADD REVIEW</buttom></a>
         <a href="{% url 'home_page_app:main' %}"><buttom class="button">GO TO MAIN PAGE</buttom></a>
 

@@ -10,28 +10,11 @@ from places_app.models import Places
 
 # Create your views here.
 
-# def create_new_review(request):
-#     if request.user.is_authenticated:
-#          # Do something for logged-in users.
-#         if request.method == 'POST':
-#             form = CreateReview(request.POST)
-#             if form.is_valid():
-#                 form.save()
-#                 return redirect('home_page_app:main')
-#         else:
-#              form = CreateReview()
-#              return render(request, 'create_review_test.html', {'form': form})
-#     else:
-#         # Do something for anonymous users.
-#         messages.success(request, f'You must be logged it to add some review!')
-#         return redirect('login_user')
-
-
 def create_new_review(request, place_id):
     # url = request.META.get('HTTP_REFERER')
     if request.user.is_authenticated:
         our_user = request.user
-        our_place = get_object_or_404(Places, pk=place_id) # instance object PLACE
+        our_place = get_object_or_404(Places, pk=place_id) # instance of PLACE
          # Do something for logged-in users.
         if request.method == 'POST':
             form = CreateReview(request.POST)
@@ -54,19 +37,22 @@ def create_new_review(request, place_id):
         return render(request, 'create_review_test.html', {'form': form})
     else:
         # Do something for anonymous users.
-        messages.success(request, f'You must be logged it to add some review!')
+        # messages.success(request, f'You must be logged it to add some review!')
         return redirect('login_user')
 
-# class ReviewView(View):
-#     def get(self, request):
-#         return render(
-#             request, template_name='review_all.html', context={'reviews': Review.objects.all()}
-#         )
-def view_all_reviews(request):
+def view_all_reviews(request, place_id):
+    our_place = get_object_or_404(Places, pk=place_id)
     return render(
         request,
         template_name='review_form_karola.html',
-        context={'reviews': Review.objects.all()}
-                    )
+        context={'reviews': Review.objects.filter(place_name=our_place).all()}
+
+            )
+
+ # class LakesView(ListView):
+ #        template_name = "place.html"
+ #
+ #        def get_queryset(self):
+ #            return Places.objects.filter(region__exact='Lakes').all()
 
 

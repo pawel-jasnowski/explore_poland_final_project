@@ -1,7 +1,9 @@
 {% extends "review_form_karola.html" %}
 {% block content %}
 
+    <h2>You can now add some review for:  { nazWa obiektu } {{  place.id }}</h2>
 <form action="" method="POST">
+
       {% csrf_token %}
       {{ form.as_p}}
 

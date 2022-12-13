@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Review Your Reservation</title>
+    <title>Review</title>
 
     <link rel="stylesheet" href="{% static 'new2.css' %}">
 </head>
@@ -31,8 +31,7 @@
 
 
         <h2 id="fh2">Hello {{ user.username }},</h2>
-        <h2 id="fh5">Your review will help us to improve our web hosting quality products, and customer services.</h2>
-        <h2 id="fh2">Thank You !</h2>
+
          <div class="container">
             <div class="jumbotron">
 
@@ -42,7 +41,7 @@
 
                 <table>
                  <tr>
-
+                    <td>PLACE: {{  review.place_name }}</td>
                     <td>RATING: {{ review.rating }} </td>
                     <td>OPINION ABOUT THAT PLACE: {{ review.review_body }}</td>
                      <td>AUTHOR: {{review.author.first_name }} - {{ review.author.last_name }} </td>
