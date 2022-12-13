@@ -1,6 +1,5 @@
-from django.db.models import Model, TextField, CharField, IntegerField, \
+from django.db.models import Model, TextField, IntegerField, \
     ForeignKey, CASCADE
-from django import forms
 from django.contrib.auth.models import User
 from places_app.models import Places
 

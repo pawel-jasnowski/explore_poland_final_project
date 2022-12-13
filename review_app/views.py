@@ -1,6 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.urls import reverse_lazy
-from django.contrib import messages
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.views.generic import View
 
@@ -8,10 +6,10 @@ from .forms import CreateReview
 from review_app.models import Review
 from places_app.models import Places
 
+
 # Create your views here.
 
 def create_new_review(request, place_id):
-    # url = request.META.get('HTTP_REFERER')
     if request.user.is_authenticated:
         our_user = request.user
         our_place = get_object_or_404(Places, pk=place_id) # instance of PLACE
@@ -26,18 +24,11 @@ def create_new_review(request, place_id):
                 data.author = our_user
                 data.place_name = our_place
                 data.save()
-
-                # instance.author = our_user
-                # instance = our_place.place_name
-                # instance.save()
-                # form.save()
                 return redirect('home_page_app:main')
         else:
             form = CreateReview()
         return render(request, 'create_review_test.html', {'form': form})
     else:
-        # Do something for anonymous users.
-        # messages.success(request, f'You must be logged it to add some review!')
         return redirect('login_user')
 
 def view_all_reviews(request, place_id):
@@ -48,11 +39,3 @@ def view_all_reviews(request, place_id):
         context={'reviews': Review.objects.filter(place_name=our_place).all()}
 
             )
-
- # class LakesView(ListView):
- #        template_name = "place.html"
- #
- #        def get_queryset(self):
- #            return Places.objects.filter(region__exact='Lakes').all()
-
-

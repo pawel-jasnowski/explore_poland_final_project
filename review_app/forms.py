@@ -1,4 +1,4 @@
-from django.forms import ModelForm, CharField, IntegerField, Textarea
+from django.forms import ModelForm
 from django import forms
 
 from .models import Review
@@ -17,11 +17,10 @@ RATING_CHOICES = [
 class CreateReview(ModelForm):
     class Meta:
         model = Review
-        # fields = "__all__"  # all fields from model Review
         fields = ('rating', 'review_body')
 
 
         widgets = {
             'rating': forms.Select(attrs={'class':'form-control'}, choices=RATING_CHOICES),
-            'review_body': forms.Textarea (attrs={'class':'form-control'}),
+            'review_body': forms.Textarea(attrs={'class':'form-control'}),
                     }

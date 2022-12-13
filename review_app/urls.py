@@ -1,7 +1,5 @@
 from django.urls import path
-# from django.views.generic import View
 from .import views
-# from .views import ReviewView
 
 
 app_name = 'review_app'
