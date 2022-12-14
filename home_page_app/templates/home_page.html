@@ -17,20 +17,25 @@ Facilities with a swimming pool, terrace or barbecue area? You can find them all
 
         <div id="solid_box" class="margin2">
 <img src="{% static 'homepage/gory.jpg' %}">
-<a href="test/places/mountain/">Mountain</a>
+
                     </div>
 
         <div id="solid_box" class="margin2">
           <img src="{% static 'homepage/jeziora.jpg' %}">
-       <a href="test/lakes/">Lakes</a>
+
              </div>
 
         <div id="solid_box" class="margin2">
      <img src="{% static 'homepage/morze.jpg' %}">
 
-          <a href="test/sea/">Sea</a>
                </div>
-       </div>
+         <div id="solid_box" class="margin3">
+     <form action="{% url 'all_places' %}">
+            <button type="submit" class="solid_box button">SEARCH OFFERS</button>
+        </form>
+               </div>
+        </div>
+
 
 <div id="footer">
 <p>© All rights reserved &#128512; <br> Projekt: Explore poland

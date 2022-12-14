@@ -30,7 +30,7 @@ class Places(Model):
     facilities = MultiSelectField(choices=FACILITIES_CHOICES, max_choices=10, max_length=100, blank=False, null=False,
                                   default='')
     description = TextField(null=False)
-    image = FileField(null=False, blank=False, default="")
+    image = FileField(null=False, blank=False,  default="")
 
     def __str__(self):
         return f"{self.place_name} ({self.region},{self.city})"

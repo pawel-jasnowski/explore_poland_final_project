@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Review Your Reservation</title>
+    <title>Review</title>
 
     <link rel="stylesheet" href="{% static 'new2.css' %}">
 </head>
@@ -22,39 +22,36 @@
                 <li><a href="{% url 'register_user' %}">Register</a></li>
             {% endif %}
 
-                <li><a href="{% url 'main' %}">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="{% url 'create_review' %}">Offer</a></li>
+                <li><a href="{% url 'home_page_app:main' %}">Home</a></li>
+
         </ul>
     </div>
     <div id="logo">
         <img src="{% static 'homepage/explore_poland.jpg'%}" style="width: 980px;">
 
 
-         <h2 id="fh2">Hello {{ user.username }},</h2>
-        <h2 id="fh2">WE APPRECIATE YOUR REVIEW!</h2>
-        <h2 id="fh2">tutaj powinno być info jakiej rezerwacji dotyczy review ???</h2>
-        <h2 id="fh2">Thank You !</h2>
-        <h5 id="fh5">Your review will help us to improve our web hosting quality products, and customer services.</h5>
-        <div class="container">
+        <h2 id="fh2">Hello {{ user.username }},</h2>
+
+         <div class="container">
             <div class="jumbotron">
 
                 {% block content %}
-                 <table>
-                <tr>
-                    <td><b>ID</b></td>
-                    <td><b>Rating</b></td>
-                    <td><b>Review</b></td>
-                 </tr>
-        {% for review in reviews %}
-                 <tr>
-                     <td>{{ review.id }}</td>
-                    <td>{{ review.rating }} </td>
-                    <td>{{ review.review_body }}</td>
-                 </tr>
 
-                    </table>
+        {% for review in reviews %}
+
+                <table>
+                 <tr>
+                    <td>PLACE: {{  review.place_name }}</td>
+                    <td>RATING: {{ review.rating }} </td>
+                    <td>OPINION ABOUT THAT PLACE: {{ review.review_body }}</td>
+                     <td>AUTHOR: {{review.author.first_name }} - {{ review.author.last_name }} </td>
+                 </tr>
+                </table>
+
+
         {% endfor %}
+
+
                 {% endblock %}
             </div>
         </div>

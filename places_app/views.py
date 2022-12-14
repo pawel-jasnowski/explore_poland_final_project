@@ -1,36 +1,15 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from .forms import PlacesForm, BookingForm
+from django.shortcuts import render
+
 from .models import Places, Booking, FACILITIES_CHOICES
 from django.contrib import messages
 from django.db.models import Q
 import datetime
 from django.http import HttpResponseRedirect
 from django.core.exceptions import ValidationError
-from django.views.generic import ListView
+
 from datetime import datetime
 
 
-class MountainView(ListView):
-    model = Places
-    template_name = "place.html"
-    content_object_name = 'place'
-
-    def get_queryset(self):
-        return Places.objects.filter(region__exact='Mountains').all()
-
-
-class LakesView(ListView):
-    template_name = "place.html"
-
-    def get_queryset(self):
-        return Places.objects.filter(region__exact='Lakes').all()
-
-
-class SeaView(ListView):
-    template_name = "place.html"
-
-    def get_queryset(self):
-        return Places.objects.filter(region__exact='Sea').all()
 
 
 def check_booking(start_date, end_date, id):
@@ -181,112 +160,36 @@ def get_summary(request, id):
 
     context = {'start_date': start_date, 'end_date': end_date, 'place': place, 'total_price': total_price}
 
-    return render(request, "summary.html", context)
+    return render(request, "reservation.html", context)
 
 
-def new_place(request):
-    form = PlacesForm(request.POST or None, request.FILES or None)
-
-    if form.is_valid():
-        form.save()
-
-    return render(request, 'place_form.html', {'form': form})
-
-
-def edit_place(request, id):
-    place = get_object_or_404(Places, pk=id)
-    form = PlacesForm(request.POST or None, request.FILES or None, instance=place)
-
-    if form.is_valid():
-        form.save()
-        return redirect(all_places)
-
-    return render(request, 'place_form.html', {'form': form})
-
-
-def delete_place(request, id):
-    place = get_object_or_404(Places, pk=id)
-
-    if request.method == "POST":
-        place.delete()
-        return redirect(all_places)
-
-    return render(request, 'confirm_deletion.html', {'place': place})
-
-# def get_detail(request, id):
+# def new_place(request):
+#     form = PlacesForm(request.POST or None, request.FILES or None)
+#
+#     if form.is_valid():
+#         form.save()
+#
+#     return render(request, 'place_form.html', {'form': form})
+#
+#
+# def edit_place(request, id):
 #     place = get_object_or_404(Places, pk=id)
+#     form = PlacesForm(request.POST or None, request.FILES or None, instance=place)
+#
+#     if form.is_valid():
+#         form.save()
+#         return redirect(all_places)
+#
+#     return render(request, 'place_form.html', {'form': form})
+#
+#
+# def delete_place(request, id):
+#     place = get_object_or_404(Places, pk=id)
+#
 #     if request.method == "POST":
-#         place.detail()
-#         return redirect(place)
-#     return render(request, ".html", {'place': place})
+#         place.delete()
+#         return redirect(all_places)
+#
+#     return render(request, 'confirm_deletion.html', {'place': place})
 
 
-# def get_reservation(request, slug=None):
-#     if request.method == 'POST':
-#         form = BookingForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#
-#             return redirect(all_places)
-#
-#     else:
-#         form = BookingForm()
-#
-#     return render(request, 'reservation.html', {'form': form})
-
-# def get_reservation(request, slug=None):
-#     all_places = None
-#     if slug is not None:
-#         try:
-#             all_places = Places.objects.get(slug=slug)
-#         except Places.DoesNotExist:
-#             raise Http404
-#         except Places.MultipleObjectsReturned:
-#             all_places = Places.objects.filter(slug=slug).first()
-#         except:
-#             raise Http404
-#
-#     context = {"all_places": all_places}
-#     return render(request, 'reservation.html', context)
-
-
-# def hotel_detail(request, id):
-#     all_places = Places.objects.get(id=id)
-#
-#     if request.method == 'POST':
-#         checkin = request.POST.get('checkin')
-#         checkout = request.POST.get('checkout')
-#         place = Places.objects.get(id=id)
-#         if not check_booking(checkin, checkout, uid, hotel.room_count):
-#             messages.warning(request, 'Hotel is already booked in these dates ')
-#             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-#
-#         HotelBooking.objects.create(hotel=hotel, user=request.user, start_date=checkin
-#                                     , end_date=checkout, booking_type='Pre Paid')
-#
-#         messages.success(request, 'Your booking has been saved')
-#         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
-
-# def get_summary(request):
-#     booking = BookingForm(request.POST or None)
-#
-#     if booking.is_valid():
-#         booking.save()
-#
-#     return render(request, "summary.html", {'booking': booking})
-
-# class BookingView(FormView):
-#     form_class = BookingForm
-#     template_name = 'reservation.html'
-#
-#     def form_valid(self, form):
-#         data = form.cleaned_data
-#
-#         booking = Booking.object.create(
-#             user=request.user,
-#             start_date=data['start_date'],
-#             end_date=data['end_date']
-#
-#         )
-#         booking.save()

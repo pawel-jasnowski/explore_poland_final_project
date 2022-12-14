@@ -1,16 +1,19 @@
-
 {% extends "base.html" %}
 
-{% block start %}
+{%  block start %}
 
 <div class="container mt-5 pt-5">
     <div class="row search-card-result">
 
-    <div class="col-md-3">
+
+
         <div class="col-md-3">
-                        <a href='/test/reservation/{{ all_place.id }}'>
-                             <img class="img-fluid" src="/media/{{images.first.images}}" alt="Card image cap">
-                        </a>  </div>
+            <a href='/test/reservation/{{ all_place.id }}'>
+                <img class="img-fluid" src="/media/{{images.first.images}}" alt="Card image cap">
+                </a></div>
+
+
+
         <div class="col-md-5">
             <h5>{{all_place.place_name}}</h5>
 
@@ -26,14 +29,13 @@
         </div>
         <div class="col-md-2 border-left text-center more-offers">
 
-            <p>Place.com</p>
-            <p>${{all_place.price_per_night}}</p>
-            <p>Room count</p>
+            <p>Price per night: </p>
+            <p>PLN {{all_place.price_per_night}}</p>
+            <p>Object type: </p>
             <p>{{all_place.object_type}}</p>
         </div>
         <div class="col-md-2 border-left text-center more-offers">
 
-            <div class="btn btn-success">View deal </div>
         </div>
     </div>
     <div class="row">
@@ -46,7 +48,7 @@
     {% if request.user.is_authenticated%}
         {% if request.session.action and request.session.action == 'confirm' %}
 
-            Czy chcesz zarezerwowac wyjazd od {{ request.session.start_date }} do {{ request.session.end_date }} za calkowity koszt {{ request.session.total_price }} mordo ??
+            Would you like to book a trip from  {{ request.session.start_date }} to {{ request.session.end_date }} for the total cost of {{ request.session.total_price }} ?
 
             <form method="post">
                 {% csrf_token %}
@@ -82,7 +84,7 @@
 
         {% endif %}
     {% else %}
-        <a href="/login/" class="btn btn-primary mt-5 ">Login</a>
+        <a href="{% url 'login_user' %}" class="btn btn-primary mt-5 ">Login</a>
     {% endif %}
 </div>
 
