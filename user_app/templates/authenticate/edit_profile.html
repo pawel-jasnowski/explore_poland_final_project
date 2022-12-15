@@ -1,0 +1,20 @@
+{% extends "home_for_user.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+<h1>Edit Your Profile</h1>
+<br/><br/>
+<div class="from-group">
+ <form  method=POST>
+   {% csrf_token %}
+   {{ form|crispy }}
+     <br></br>
+     <input type="submit" value="Change Your Profile">
+<!--   <button class="'btn btn-secondary">Update Your Profile</button>-->
+
+</div>
+<br/><br/>
+{% endblock %}

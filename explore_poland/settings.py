@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,9 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'explore_poland_app',
+    'places_app',
     'home_page_app',
+    'multiselectfield',
+    'review_app',
+    'user_app',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +62,7 @@ ROOT_URLCONF = 'explore_poland.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': ["places_app/templates"],
         'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -65,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -121,9 +128,33 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
 
+CRISPY_TEMPLATE_PACK ='bootstrap4'
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'explore_media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/explore/home_page'
+LOGOUT_REDIRECT_URL = '/explore/home_page'
+
+# email stuff ##################
+
+
+# EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_FROM = 'pawel.jasnowski@gmail.com'
+# EMAIL_HOST_USER = 'pawel.jasnowski@gmail.com'
+# EMAIL_HOST_PASSWORD = 'ejqltwuwxxnlbeiv'    # ask ADMIN password
+# DEFAULT_FROM_EMAIL = 'pawel.jasnowski@gmail.com'
+EMAIL_FROM = 'mieczkowska.maartyna@gmail.com'
+EMAIL_HOST_USER = 'mieczkowska.maartyna@gmail.com'
+EMAIL_HOST_PASSWORD = 'rnkhastriclnojuf'    # ask ADMIN password
+DEFAULT_FROM_EMAIL = 'mieczkowska.maartyna@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+PASSWORD_RESET_TIMEOUT = 14400 # token will be valid for 4hours in this case

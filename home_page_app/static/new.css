@@ -2,7 +2,7 @@ body {
 	font-family: Arial;
 	font-size: 12px;
 	color: #666;
-	background:  url("/explore_media/homepage/bg.jpg") repeat-x top left;
+	background: repeat-x top left;
 	text-align: center;
 	margin: 0;
 }
@@ -137,7 +137,8 @@ a:hover {
 }
 
 .margin3 {
-	margin-left: 30px;
+	margin-left: 280px;
+
 }
 
 #container {
@@ -247,4 +248,15 @@ h2 {
 
 #footer a {
 	color: #8ca05e;
+}
+
+#solid_box button {
+	padding: 10px;
+	background: #8ca05e;
+	color: white;
+	font-size: 24px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 370px;
+
 }

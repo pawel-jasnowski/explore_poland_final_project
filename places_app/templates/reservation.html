@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{%  block start %}
+
+<div class="container mt-5 pt-5">
+    <div class="row search-card-result">
+
+
+
+        <div class="col-md-3">
+            <a href='/test/reservation/{{ all_place.id }}'>
+                <img class="img-fluid" src="/media/{{images.first.images}}" alt="Card image cap">
+                </a></div>
+
+
+
+        <div class="col-md-5">
+            <h5>{{all_place.place_name}}</h5>
+
+            <p>
+                {{all_place.description|truncatechars:150}}
+            </p>
+            <p>
+                {%for facility in all_place.facilities.all %}
+                    <b>{{facility.facilities}}</b>,
+                {% endfor %}
+            </p>
+
+        </div>
+        <div class="col-md-2 border-left text-center more-offers">
+
+            <p>Price per night: </p>
+            <p>PLN {{all_place.price_per_night}}</p>
+            <p>Object type: </p>
+            <p>{{all_place.object_type}}</p>
+        </div>
+        <div class="col-md-2 border-left text-center more-offers">
+
+        </div>
+    </div>
+    <div class="row">
+        {% for image in images %}
+            <div class="col-md-3">
+                <img src="{{ image.images.url }}" style="height: 150px ; width:150px">
+            </div>
+            {% endfor %}
+    </div>
+    {% if request.user.is_authenticated%}
+        {% if request.session.action and request.session.action == 'confirm' %}
+
+            Would you like to book a trip from  {{ request.session.start_date }} to {{ request.session.end_date }} for the total cost of {{ request.session.total_price }} ?
+
+            <form method="post">
+                {% csrf_token %}
+                <input type="submit" value="cancel" name="confirmed">
+                <input type="submit" value="agree" name="confirmed">
+            </form>
+
+        {% else %}
+
+        <div class="filter-card">
+                <h5>Book Hotel</h5>
+                {% include "messages.html" %}
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label for="start_date">Check in</label>
+                            <input type="date" name="start_date" id="start_date" class="form-control required">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="end_date">Check out</label>
+                            <input type="date" name="end_date" id="end_date" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-primary btn-block" value="Book">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        {% endif %}
+    {% else %}
+        <a href="{% url 'login_user' %}" class="btn btn-primary mt-5 ">Login</a>
+    {% endif %}
+</div>
+
+{% endblock %}
