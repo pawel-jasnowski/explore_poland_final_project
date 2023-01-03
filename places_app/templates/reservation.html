@@ -13,12 +13,11 @@
                 </a></div>
 
 
-
         <div class="col-md-5">
             <h5>{{all_place.place_name}}</h5>
 
             <p>
-                {{all_place.description|truncatechars:150}}
+                {{all_place.description|truncatechars:1000}}
             </p>
             <p>
                 {%for facility in all_place.facilities.all %}
@@ -45,7 +44,7 @@
             </div>
             {% endfor %}
     </div>
-    {% if request.user.is_authenticated%}
+    {% if request.user.is_authenticated %}
         {% if request.session.action and request.session.action == 'confirm' %}
 
             Would you like to book a trip from  {{ request.session.start_date }} to {{ request.session.end_date }} for the total cost of {{ request.session.total_price }} ?
@@ -81,6 +80,9 @@
                     </div>
                 </form>
             </div>
+    <br><a href="{% url 'home_page_app:main' %}">Home</a> ||
+        <a href="{% url 'all_places' %}">Hotel list</a> ||
+
 
         {% endif %}
     {% else %}

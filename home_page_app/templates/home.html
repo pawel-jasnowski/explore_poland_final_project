@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Szablon</title>
+    <title>HELLO POLAND</title>
 
     <link rel="stylesheet" href="{% static 'new.css' %}">
 </head>
@@ -15,6 +15,7 @@
     <div id="menu">
         <ul>
           {% if user.is_authenticated %}
+
                 <li> <a href="{% url 'logout_user' %}">Logout</a></li>
                 <li> <a href="{% url 'profile_edit' %}">Edit Profile</a></li>
              {% else %}
@@ -33,6 +34,7 @@
       <div class="jumbotron">
         {% block content %}{% endblock %}
       </div>
+    </div>
 
 </body>
 </html>
